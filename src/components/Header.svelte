@@ -2,7 +2,7 @@
     <a href="#home" class="text-2xl font-bold">
         <img src="{logo.src}" alt="logo" class="w-10 h-10 inline-block" />
     </a>
-    <nav id="header-links">
+    <nav id="header-links" class="hidden md:flex">
         {#each anchors as anchor}
             <a href={`#${anchor}`} class="text-lg font-semibold mx-4" on:click={handleClick}>{anchor}</a>
         {/each}
@@ -17,8 +17,7 @@
 
     onMount(() => {
         const links = document.querySelectorAll('nav#header-links a');
-        console.log(logo.src , 'logo')
-        activeClasses.map((className) => {
+        activeClasses.forEach((className) => {
             links[0].classList.add(className);
         });
     });
@@ -27,11 +26,11 @@
         const links = document.querySelectorAll('nav#header-links a');
         links.forEach((link) => {
             console.log(link.classList, 'link');
-            activeClasses.map((className) => {
+            activeClasses.forEach((className) => {
                 link.classList.remove(className);
             });
         });
-        activeClasses.map((className) => {
+        activeClasses.forEach((className) => {
             e.target.classList.add(className);
         });
     }
