@@ -11,7 +11,7 @@
 </header>
 
 <script>
-    import logo from '@assets/logo-white.png';
+    import logo from '@assets/logo-white.svg';
     import { onMount, onDestroy } from 'svelte';
     const anchors = ['home', 'about', 'projects', 'contact'];
     const activeClasses = ['active', 'bg-gradient-to-r', 'from-(--ui-primary)', 'to-indigo-600', 'bg-clip-text', 'text-transparent'];
