@@ -4,6 +4,7 @@
 @theme {
     --font-sans: 'Montserrat', 'sans-serif';
     --font-archivo: 'Archivo Black', 'sans-serif';
+    --ui-primary: #E02B45;
 }
 
 html,
@@ -27,7 +28,7 @@ body {
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
     background-size: 500% auto;
-    animation: textShine 2s ease-in-out infinite alternate;
+    animation: textShine 1.5s ease-in-out infinite alternate;
 }
 
 .infinite-scroll-container {
@@ -40,6 +41,26 @@ body {
 .infinite-scroll-container:hover .animate-scroll {
     animation-play-state: paused;
 }
+
+.wave {
+    animation-name: helloWave;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
+@keyframes helloWave {
+    0% { transform: rotate( 0.0deg) }
+    10% { transform: rotate(14.0deg) }
+    20% { transform: rotate(-8.0deg) }
+    30% { transform: rotate(14.0deg) }
+    40% { transform: rotate(-4.0deg) }
+    50% { transform: rotate(10.0deg) }
+    60% { transform: rotate( 0.0deg) }
+    100% { transform: rotate( 0.0deg) }
+}
+
 
 @keyframes textShine {
     0% {

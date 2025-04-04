@@ -1,11 +1,11 @@
 <section id="home" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-5 relative">
-    <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there 👋</h2>
-    <h1 class="text-5xl md:text-6xl font-bold text-center" data-aos="fade-up" data-aos-delay="400">I'm <span >Brian Monsales</span></h1>
-    <h2 class="text-3xl md:text-4xl font-bold text-center mt-3 bg-gradient-to-r from-fuchsia-600 to-indigo-600 bg-clip-text text-transparent text-shine"
+    <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class="wave">👋</span></h2>
+    <h1 class="text-4xl md:text-5xl text-center" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-5xl md:text-6xl font-bold text-(--ui-primary)">Brian Monsales</span></h1>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mt-3 bg-gradient-to-r from-[#f7f0ac] via-[#acf7f0] to-[#f0acf7] bg-clip-text text-transparent text-shine"
     data-aos="fade-up" data-aos-delay="500">
         Full Stack Web Developer
     </h2>
-    <h5 class="mt-2 flex flex-row justify-center items-center gap-1" data-aos="fade-up" data-aos-delay="600">
+    <h5 class="mt-3 flex flex-row justify-center items-center gap-1 font-bold" data-aos="fade-up" data-aos-delay="600">
         <i class="inline" width="18" height="18" data-lucide="map-pin"></i>Bohol, Philippines
     </h5>
 
@@ -22,13 +22,16 @@
         </div>
     </div>
 
-    <div class="min-h-[400px] w-full"></div>
+    <div class="absolute rounded-full -left-20 -top-20 size-[300px] z-10 bg-(--ui-primary) opacity-90 blur-[200px]"></div>
     
-    <img src={programmer.src} alt="programmer" class="absolute max-h-[400px] w-full bottom-0 left-0 object-contain" data-aos="fade-up" data-aos-delay="800"/>
+    <div class="min-h-[300px] md:min-h-[400px] w-full"></div>
+    <img src={workstation.src} alt="workstation" class="absolute h-[400px] w-[820px] bottom-0 left-1/2 z-9 object-cover transform -translate-x-1/2" data-aos="fade-up" data-aos-delay="800"/>
+    <img src={programmer.src} alt="programmer" class="absolute max-h-[400px] w-full bottom-0 left-0 object-contain z-10" data-aos="fade-up" data-aos-delay="1200"/>
 </section>
 
 <script>
     import programmer from '@assets/programmer.png';
+    import workstation from '@assets/workstation.png';
 
     const tech = [
         {name: 'Bash', svg_name: 'bash'}, {name: 'HTML', svg_name: 'html'}, {name: 'CSS', svg_name: 'css'},
