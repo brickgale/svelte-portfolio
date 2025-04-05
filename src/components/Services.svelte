@@ -1,4 +1,4 @@
-<section id="services" class="min-h-screen w-full flex flex-col relative justify-center items-center relative py-20">
+<section id="services" class="min-h-screen w-full flex flex-col relative justify-center items-center relative py-25">
     <div data-orientation="horizontal" role="separator" class="w-full absolute left-0 top-0">
         <div class="w-full border-solid border-t border-(--ui-primary)/30"></div>
     </div>
@@ -9,8 +9,8 @@
         </div>
         <div class="flex flex-row flex-wrap -m-2">
             {#each services as service, key}
-                <div class="w-full sm:w-1/2 md:w-1/3 p-2 flex justify-center">
-                    <Card class="bg-gray-700" data-aos="fade-up" data-aos-delay={200*key}> 
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
+                    <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={200*key}> 
                         {#snippet title()}
                             {service.title}
                         {/snippet}
@@ -18,7 +18,7 @@
                             {service.content}
                         {/snippet}
                         {#snippet footer()}
-                            Tech used: <br /> <span class="text-sm">{service.tech}</span>
+                            Tech used: <br /> <span class="text-xs">{service.tech}</span>
                         {/snippet}
                     </Card>
                 </div>
@@ -36,18 +36,18 @@
     const services = [
         {
             title: 'UI/UX Design',
-            content: 'Designing intuitive and engaging user interfaces that focuses in user experience that leads to conversions.',
+            content: 'Designing intuitive and engaging user interfaces across different devices that focuses in user experience that leads to conversions.',
             tech: 'Figma, Zeplin, Photoshop',
         },
         {
             title: 'Frontend Development',
-            content: 'Construct responsive and user-friendly websites using modern frontend libraries whether it is React, Vue, and Svelte.',
+            content: 'Construct responsive and user-friendly websites using modern frontend libraries whether it is React, Vue, and Svelte. Utilizing state management and built in functions that choosen library provides.',
             tech: 'Vanilla JS, JQuery, React, Vue, Svelte, TailwindCSS, Bootstrap',
         },
         {
             title: 'API Development',
-            content: 'Building robust REST APIs, integrate different business logic, use industry standard authentication, and even integrate payment gateways.',
-            tech: 'PHP, Laravel, NodeJs, Express, Prisma, MySQL, MongoDB, SQLite',
+            content: 'Building robust REST APIs, integrate different business logic, use industry standard authentication, and integrate payment gateways.',
+            tech: 'Laravel, Express, Prisma, MySQL, MongoDB, SQLite',
         },
     ];
 </script>
