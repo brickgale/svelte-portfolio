@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap&family=Outfit:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'Montserrat', 'sans-serif';
-    --font-archivo: 'Archivo Black', 'sans-serif';
+    --font-sans: 'Outfit', 'sans-serif';
+    --font-schibsted: 'Schibsted Grotesk', 'sans-serif';
     --ui-primary: #E02B45;
+    --tw-backdrop-blur: blur(8px);
+    --ui-bg: #202020;
 }
 
 html,
@@ -16,10 +18,26 @@ body {
     background-color: #202020;
 }
 
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-schibsted);
+    font-weight: bold;
+}
+
 .main-container {
     background: rgb(11,21,21);
     background: linear-gradient(0deg, rgb(36, 19, 35) 0%, rgb(83, 26, 95) 74%, rgb(53, 13, 43) 100%);
     color: #fff;
+}
+
+.logo {
+    -webkit-mask: url(/logo-white.svg) no-repeat center;
+    mask: url(/logo-white.svg) no-repeat center / contain;
+    transition: .3s ease-in-out;
+}
+
+.backdrop-blur {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,)var(--tw-backdrop-brightness,)var(--tw-backdrop-contrast,)var(--tw-backdrop-grayscale,)var(--tw-backdrop-hue-rotate,)var(--tw-backdrop-invert,)var(--tw-backdrop-opacity,)var(--tw-backdrop-saturate,)var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,)var(--tw-backdrop-brightness,)var(--tw-backdrop-contrast,)var(--tw-backdrop-grayscale,)var(--tw-backdrop-hue-rotate,)var(--tw-backdrop-invert,)var(--tw-backdrop-opacity,)var(--tw-backdrop-saturate,)var(--tw-backdrop-sepia,);
 }
 
 .text-shine {

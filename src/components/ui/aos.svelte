@@ -7,6 +7,7 @@
     onMount(() => {
         AOS.init({
             duration: 1000,
+            once: true
         });
         createIcons({ icons });
         window.history.scrollRestoration = "manual";

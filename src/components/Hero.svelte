@@ -1,13 +1,13 @@
-<section id="home" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-5 relative">
+<section id="about" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-5 relative">
     <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class="wave">👋</span></h2>
-    <h1 class="text-4xl md:text-5xl text-center" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-5xl md:text-6xl font-bold text-(--ui-primary)">Brian Monsales</span></h1>
+    <h1 class="text-4xl md:text-5xl text-center font-bold" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-5xl md:text-6xl text-(--ui-primary)">Brian Monsales</span></h1>
     <h2 class="text-3xl md:text-4xl font-bold text-center mt-3 bg-gradient-to-r from-[#f7f0ac] via-[#acf7f0] to-[#f0acf7] bg-clip-text text-transparent text-shine"
     data-aos="fade-up" data-aos-delay="500">
         Full Stack Web Developer
     </h2>
-    <h5 class="mt-3 flex flex-row justify-center items-center gap-1 font-bold" data-aos="fade-up" data-aos-delay="600">
-        <i class="inline" width="18" height="18" data-lucide="map-pin"></i>Bohol, Philippines
-    </h5>
+    <p class="mt-3 flex flex-row justify-center items-center gap-1 font-bold" data-aos="fade-up" data-aos-delay="600">
+        <i class="inline" width="18" height="18" data-lucide="map-pin"></i>Tagbilaran City, Bohol, Philippines
+    </p>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div class="relative overflow-x-hidden py-8 infinite-scroll-container" data-aos="fade-up" data-aos-delay="700">
@@ -26,7 +26,7 @@
     
     <div class="min-h-[300px] md:min-h-[400px] w-full"></div>
     <img src={workstation.src} alt="workstation" class="absolute h-[400px] w-[820px] bottom-0 left-1/2 z-9 object-cover transform -translate-x-1/2" data-aos="fade-up" data-aos-delay="800"/>
-    <img src={programmer.src} alt="programmer" class="absolute max-h-[400px] w-full bottom-0 left-0 object-contain z-10" data-aos="fade-up" data-aos-delay="1200"/>
+    <img src={programmer.src} alt="programmer" class="absolute max-h-[360px] w-full bottom-0 left-0 object-contain z-10" data-aos="fade-up" data-aos-delay="1200"/>
 </section>
 
 <script>
