@@ -4,8 +4,8 @@
     </div>
     <div class="flex flex-row flex-wrap w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20">
         <div class="w-full title pb-10 md:pb-20">
-            <h2 class="text-3xl pb-2" data-aos="fade-up" data-aos-delay="100">Primary Focuses</h2>
-            <p class="text-xl" data-aos="fade-up" data-aos-delay="150">Core services offering</p>
+            <h2 class="text-2xl md:text-4xl pb-2 font-lighter" data-aos="fade-up" data-aos-delay="100">Primary Focuses</h2>
+            <p class="text-xl md:text-2xl" data-aos="fade-up" data-aos-delay="150">Core services offering</p>
         </div>
         <div class="flex flex-row flex-wrap -m-2">
             {#each services as service, key}
@@ -36,7 +36,7 @@
     const services = [
         {
             title: 'UI/UX Design',
-            content: 'Designing intuitive and engaging user interfaces across different devices that focuses in user experience that leads to conversions.',
+            content: 'Designing intuitive and engaging user interfaces across different devices that focuses in user experience that leads to conversions and user retention. Making sure that the design is consistent and easy to use.',
             tech: 'Figma, Zeplin, Photoshop',
         },
         {
