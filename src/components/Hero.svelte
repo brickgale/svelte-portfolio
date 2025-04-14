@@ -26,7 +26,6 @@
         <Button sType="success" withShine={true} text="Download Resume" icon="download" on:click={() => downloadResume()}/>
     </div>
 
-    <div class="absolute rounded-full -left-20 -top-20 size-[300px] z-10 bg-(--ui-primary) opacity-90 blur-[200px]"></div>
     
     <div class="min-h-[300px] md:min-h-[400px] w-full"></div>
     <img src={workstation.src} alt="workstation" class="absolute h-[400px] w-[820px] bottom-0 left-1/2 z-9 object-cover transform -translate-x-1/2" data-aos="fade-up" data-aos-delay="800"/>

@@ -10,7 +10,7 @@
         <div class="flex flex-row flex-wrap -m-2">
             {#each services as service, key}
                 <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
-                    <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={200*key}> 
+                    <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={300+(50 * key)}> 
                         {#snippet title()}
                             {service.title}
                         {/snippet}
