@@ -22,6 +22,10 @@
         </div>
     </div>
 
+    <div class="btn-con" data-aos="fade-up" data-aos-delay="700">
+        <Button sType="success" withShine={true} text="Download Resume" icon="download" on:click={() => downloadResume()}/>
+    </div>
+
     <div class="absolute rounded-full -left-20 -top-20 size-[300px] z-10 bg-(--ui-primary) opacity-90 blur-[200px]"></div>
     
     <div class="min-h-[300px] md:min-h-[400px] w-full"></div>
@@ -32,13 +36,18 @@
 <script>
     import programmer from '@assets/programmer.png';
     import workstation from '@assets/workstation.png';
+    import Button from '@components/ui/Button.svelte';
 
     const tech = [
         {name: 'Bash', svg_name: 'bash'}, {name: 'HTML', svg_name: 'html'}, {name: 'CSS', svg_name: 'css'},
         {name: 'Vue', svg_name: 'vue'}, {name: 'React', svg_name: 'react'}, {name: 'Svelte', svg_name: 'svelte'},
         {name: 'Javascript', svg_name: 'javascript'}, {name: 'Typescript', svg_name: 'typescript'}, {name: 'NodeJs', svg_name: 'nodejs'},
-        {name: 'PHP', svg_name: 'php'}, {name: 'MySQL', svg_name: 'mysql'}, {name: 'MongoDB', svg_name: 'mongodb'},
+        {name: 'Laravel', svg_name: 'laravel'}, {name: 'PHP', svg_name: 'php'}, {name: 'MySQL', svg_name: 'mysql'}, {name: 'MongoDB', svg_name: 'mongodb'},
     ]
+
+    function downloadResume () {
+        console.log('downloading...')
+    }
 </script>
 
 <style>
