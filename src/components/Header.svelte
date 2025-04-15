@@ -17,8 +17,6 @@
     const anchors = ['about', 'services', 'projects', 'contact'];
     const activeClasses = ['active', 'bg-gradient-to-r', 'from-(--ui-primary)', 'to-indigo-600', 'bg-clip-text', 'text-transparent'];
 
-    console.log(logo);
-
     onMount(() => {
         const links = document.querySelectorAll('nav#header-links a');
         activeClasses.forEach((className) => {

@@ -16,6 +16,7 @@
     // console.log("rect", $positionX, $positionY);
   };
   let handleFocus = () => {
+    console.log('focusing...');
     isFocused = true;
     opacity = 1;
   };
@@ -38,11 +39,11 @@
 <div class="relative w-full">
     {#if props.isTextarea}
         <textarea
-            onmousemove={handleMouseMove}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            onmouseenter={handleMouseEnter}
-            onmouseleave={handleMouseLeave}
+            on:mousemove={handleMouseMove}
+            on:focus={handleFocus}
+            on:blur={handleBlur}
+            on:mouseenter={handleMouseEnter}
+            on:mouseleave={handleMouseLeave}
             autocomplete={props.autocomplete}
             placeholder={props.placeholder}
             name={props.name}
@@ -51,11 +52,11 @@
         ></textarea>
     {:else}
         <input
-            onmousemove={handleMouseMove}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            onmouseenter={handleMouseEnter}
-            onmouseleave={handleMouseLeave}
+            on:mousemove={handleMouseMove}
+            on:focus={handleFocus}
+            on:blur={handleBlur}
+            on:mouseenter={handleMouseEnter}
+            on:mouseleave={handleMouseLeave}
             autocomplete={props.autocomplete}
             placeholder={props.placeholder}
             type={props.type}
