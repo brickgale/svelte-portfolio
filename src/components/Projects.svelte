@@ -1,6 +1,8 @@
 <section id="projects" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden">
-    <div class="flex flex-col w-full h-full max-w-7xl min-h-[400px] mx-auto">
-        <h2 class="text-4xl">Projects</h2>
+    <div class="flex flex-col w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20 relative z-10">
+        <div class="w-full title pb-10 md:pb-20">
+            <h2 class="text-4xl text-center">Projects</h2>
+        </div>
         <div class="flex flex-row flex-wrap -m-2">
             {#each projects as project}
                 <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
@@ -13,10 +15,11 @@
 
 <script>
     import ProjectCard from '@components/ui/ProjectCard.svelte';
+    
     const projects = [
         {
             name: "Dating X",
-            imgSrc: '/projects/dating1.png',
+            imgSrc: '/projects/dating3.png',
             company: "Optimail Co. Ltd. / Moebius Development Co. Ltd.",
             date: "2018-2024",
             description: "A multi domain dating app with theming built in to, it has messaging inside as well as push notifications for people to get notified whenever they got new messages or have been labeled as favorites for other users.",

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,400..900;1,400..900&display=swap&family=Rubik:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
 @theme {
     --font-sans: 'Rubik', 'sans-serif';
@@ -61,26 +62,6 @@ h1,h2,h3,h4,h5,h6 {
     animation-play-state: paused;
 }
 
-.bg-subtle-prism:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    background-image: url('/subtle-prism.svg');
-    background-repeat: repeat;
-    -ms-background-size: auto;
-    -o-background-size: auto;
-    -moz-background-size: auto;
-    -webkit-background-size: auto;
-    background-size: auto;
-    opacity: 0.5;
-    left: 55%;
-    top: -55%;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transform: scale(0.35) rotate(45deg);
-}
-
 .wave {
     animation-name: helloWave;
     animation-duration: 2.5s;
@@ -89,8 +70,12 @@ h1,h2,h3,h4,h5,h6 {
     display: inline-block;
 }
 
-.spotlight {
+.animate-spotlight {
     animation: "spotlight 2s ease .75s 1 forwards",
+}
+
+.animate-scroll {
+    animation: scroll 15s linear infinite;
 }
 
 @keyframes helloWave {
@@ -114,7 +99,6 @@ h1,h2,h3,h4,h5,h6 {
         transform: translate(-50%,-40%) scale(1);
     }
 }
-
 @keyframes textShine {
     0% {
         background-position: 0% 50%;
@@ -145,8 +129,4 @@ h1,h2,h3,h4,h5,h6 {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.animate-scroll {
-    animation: scroll 15s linear infinite;
 }

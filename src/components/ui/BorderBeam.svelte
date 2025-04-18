@@ -33,3 +33,18 @@
         className
     )}
 ></div>
+
+<style>
+    .animate-border-beam {
+        animation: 2s infinite linear;
+    }
+
+    @keyframes border-beam {
+        0% {
+            offset-distance: 0%;
+        }
+        100% {
+            offset-distance: 100%;
+        }
+    }
+</style>
