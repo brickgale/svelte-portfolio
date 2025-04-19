@@ -16,7 +16,7 @@
       class="absolute inset-0 from-black/95 via-black/70 to-black/10 bg-gradient-to-t"
     ></div>
     <div class="text-gray-100 sm:px-4 py-0 sm:pb-3 text-left absolute pb-1 px-4 md:pb-4 inset-x-0 bottom-2 flex flex-col justify-end size-full cursor-pointer">
-        <h3 class="text-lg font-bold tracking-tighter mt-3 mb-1">{project.name}</h3>
-        <p class="text-sm leading-5">{stringTruncate(project.description, 150)}</p>
+        <h3 class="text-lg font-bold tracking-wide mt-3 mb-1">{project.name}</h3>
+        <p class="min-h-[62px] text-sm leading-5">{stringTruncate(project.description, 150)}</p>
     </div>
 </div>

@@ -53,7 +53,7 @@
             imgSrc: '/projects/amsale.png',
             company: "Sliding Monkey Web Development",
             date: "2016",
-            description: "Ecommerce website that was built with Magento mixed with Wordpress.",
+            description: "Ecommerce website that was built with Magento mixed with Wordpress. Selling wedding dresses and other wedding related products. Contains color swatches and product customizations.",
             url: null,
             hasLiveDemo: false,
             role: "My first Magento project, it was already live when I was assigned to it. I was tasked to do some bug fixes and add new features. It was quite a bit more complicated that your normal ecommerce website unlike using Shopify. It wasn't using any version control, just uploading fies thru FTP."
@@ -63,7 +63,7 @@
             imgSrc: '/projects/kiddshoes.png',
             company: "Sliding Monkey Web Development",
             date: "2016",
-            description: "Shopify website for, you guessed it, kids' shoes.",
+            description: "Shopify website for, you guessed it, kids' shoes. It contains a lot of products and categories. Updating promos and sales depending on the season.",
             url: null,
             hasLiveDemo: false,
             role: "My first Shopify project, it was already live when I was assigned to it. I was tasked to do some bug fixes and add new features. I learned a lot about Shopify and how it works. I also learned how to use Liquid, the templating language used in Shopify."
@@ -73,7 +73,7 @@
             imgSrc: '/projects/iassess.png',
             company: "Nerubia Web Solutions",
             date: "2015-2016",
-            description: "An Assessment Platform for candidates for buesinesses in Singapore. It has complex algorithms with different exam types that would generate reporting or pdfs to what results the candidates got and analyzes it. It was a quite data heavy app, couple thousands of records for each exam. It was built with Laravel 4 and AngularJS v2.",
+            description: "An Assessment Platform for candidates to certain companies in Singapore. There were complex algorithms with different exam types that would generate candidates scores / results unto pdfs. It was a quite data heavy app, couple thousands of records for each exam. It was built with Laravel 4 and AngularJS v2.",
             url: "https://measure.iassessonline.com/",
             hasLiveDemo: true,
             role: "When I was assigned to this project, it was already in production. Eventually, I was assigned to be the main maintainer for the app for atleast a solid year. This one of the projects that was very fulfilling for me, since the company allowed me to grow and learn a lot of things. I learned a lot from this project alongside with the Senior Developers in the company. My first project that was really strict on the Agile concept with actual sprints."

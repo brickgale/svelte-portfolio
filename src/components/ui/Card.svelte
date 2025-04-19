@@ -5,7 +5,7 @@
 </script>
 
 <div {...props} class={'card flex flex-col rounded-md bg-gradient-to-br hover:bg-gradient-to-tl from-neutral-800 to-stone-700 min-h-[200px] relative '+ props.class}>
-    <BorderBeam size={120} duration={8} />
+    <BorderBeam size={150} duration={8} />
 
     <div class="card-title text-xl md:text-2xl p-5 text-gray-200 font-medium">
         {@render props.title?.()}

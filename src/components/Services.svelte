@@ -51,7 +51,7 @@
         },
         {
             title: 'API Development',
-            content: 'Building robust REST APIs, integrate different business logic, use industry standard authentication, and integrate payment gateways.',
+            content: 'Building robust REST APIs, integrate different business logic, use industry standard authentication, implement proper security measures following best practices, and integrate payment gateways.',
             tech: 'Laravel, Express, Prisma, MySQL, MongoDB, SQLite',
         },
     ];
