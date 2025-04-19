@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,400..900;1,400..900&display=swap&family=Rubik:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,400..900;1,400..900&display=swap&family=Gantari:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @config "../../tailwind.config.mjs";
 
 @theme {
-    --font-sans: 'Rubik', 'sans-serif';
+    --font-sans: 'Gantari', 'sans-serif';
     --font-outfit: 'Outfit', 'sans-serif';
     --ui-primary: #E02B45;
     --tw-backdrop-blur: blur(8px);
@@ -17,6 +17,7 @@ body {
     height: 100%;
     scroll-behavior: smooth;
     background-color: #202020;
+    font-family: var(--font-sans);
 }
 
 h1,h2,h3,h4,h5,h6 {
