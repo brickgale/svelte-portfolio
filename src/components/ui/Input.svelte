@@ -5,11 +5,6 @@
 <div class="relative w-full">
     {#if props.isTextarea}
         <textarea
-            onmousemove={handleMouseMove}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            onmouseenter={handleMouseEnter}
-            onmouseleave={handleMouseLeave}
             autocomplete={props.autocomplete}
             placeholder={props.placeholder}
             name={props.name}
@@ -18,11 +13,6 @@
         ></textarea>
     {:else}
         <input
-            onmousemove={handleMouseMove}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            onmouseenter={handleMouseEnter}
-            onmouseleave={handleMouseLeave}
             autocomplete={props.autocomplete}
             placeholder={props.placeholder}
             type={props.type}

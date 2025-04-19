@@ -10,5 +10,6 @@
         });
         createIcons({ icons });
         window.history.scrollRestoration = "manual";
+        window.location.hash = "";
     });
 </script>
