@@ -1,11 +1,11 @@
 <section id="projects" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden">
     <div class="flex flex-col w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20 relative z-10">
         <div class="w-full title pb-10 md:pb-20">
-            <h2 class="text-4xl text-center">Projects</h2>
+            <h2 class="text-4xl text-center" data-aos="fade-up" data-aos-delay="100">Projects</h2>
         </div>
         <div class="flex flex-row flex-wrap -m-2">
-            {#each projects as project}
-                <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
+            {#each projects as project, key}
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center" data-aos="fade-up" data-aos-delay={300+(50 * key)}>
                     <ProjectCard project={project} />
                 </div>
             {/each}
