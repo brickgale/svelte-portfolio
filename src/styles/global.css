@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6 {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
-    background-size: 500% auto;
+    background-size: 200% auto;
     animation: textShine 1.5s ease-in-out infinite alternate;
 }
 
@@ -104,8 +104,8 @@ h1,h2,h3,h4,h5,h6 {
     0% {
         background-position: 0% 50%;
     }
-    50% {
-        background-position: 20% 50%;
+    30% {
+        background-position: 50% 100%;
     }
     100% {
         background-position: 100% 50%;

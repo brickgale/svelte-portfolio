@@ -1,10 +1,12 @@
 <section id="about" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-5 relative">
     <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class="wave">👋</span></h2>
     <h1 class="text-4xl md:text-5xl text-center font-bold" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-5xl md:text-6xl text-(--ui-primary)">Brian Monsales</span></h1>
-    <h2 class="text-3xl md:text-4xl font-bold text-center mt-3 bg-gradient-to-r from-[#f7f0ac] via-[#acf7f0] to-[#f0acf7] bg-clip-text text-transparent text-shine"
-    data-aos="fade-up" data-aos-delay="500">
-        Full Stack Web Developer
-    </h2>
+    <div class="text-header" data-aos="fade-up" data-aos-delay="500">
+        <WordRotate
+            class="text-3xl md:text-4xl font-bold text-center mt-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent text-shine" 
+            words={["Full Stack Web Developer", "Frontend Web Developer", "Web Developer", "Software Engineer"]}
+        />
+    </div>
     <p class="mt-3 flex flex-row justify-center items-center gap-1 font-bold" data-aos="fade-up" data-aos-delay="600">
         <i class="inline" width="18" height="18" data-lucide="map-pin"></i>Tagbilaran City, Bohol, Philippines
     </p>
@@ -23,7 +25,7 @@
     </div>
 
     <div class="btn-con" data-aos="fade-up" data-aos-delay="700">
-        <Button sType="success" withShine={true} text="Download Resume" icon="download" on:click={() => downloadResume()}/>
+        <Button sType="success" withBeam={true} text="Download Resume" icon="download" on:click={() => downloadResume()}/>
     </div>
 
     
@@ -36,6 +38,7 @@
     import programmer from '@assets/programmer.png';
     import workstation from '@assets/workstation.png';
     import Button from '@components/ui/Button.svelte';
+    import WordRotate from '@components/ui/WordRotate.svelte';
 
     const tech = [
         {name: 'Bash', svg_name: 'bash'}, {name: 'HTML', svg_name: 'html'}, {name: 'CSS', svg_name: 'css'},

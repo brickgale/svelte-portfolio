@@ -8,8 +8,8 @@
     <img
       src="{project.imgSrc}"
       placeholder="blur"
-      alt="don corleone"
-      class="w-full object-cover m-0"
+      alt="{project.name}"
+      class="w-full object-cover m-0 group-hover:-translate-y1/3"
     />
     <!--  overlay  -->
     <div
