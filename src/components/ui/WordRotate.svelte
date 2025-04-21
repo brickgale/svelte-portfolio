@@ -17,7 +17,7 @@
   });
 </script>
   
-<div {...props} class="overflow-hidden h-[60px]">
+<div {...props} class="overflow-hidden">
   {#key index}
     <h1
       in:fly={{ y: -50, delay: 200 }}
