@@ -6,7 +6,7 @@
         </a>
         <nav id="header-links" class="hidden md:flex" data-aos="fade-left" data-aos-delay="200">
             {#each anchors as anchor}
-                <a href={`#${anchor}`} data-name={anchor} class="text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300" onclick={(e)=> handleClick(e, 'anchor')}>{anchor}</a>
+                <a href={`#${anchor}`} data-name={anchor} class="text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300" onclick={(e)=> handleClick(e, anchor)}>{anchor}</a>
             {/each}
         </nav>
     </div>
@@ -14,15 +14,11 @@
 
 <script>
     const anchors = ['about', 'services', 'projects', 'contact'];
-    const activeClasses = ['active', 'bg-gradient-to-r', 'from-(--ui-primary)', 'to-indigo-600', 'bg-clip-text', 'text-transparent'];
+    const defaultClasses = 'text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300';
+    const activeClasses = 'active bg-gradient-to-r from-(--ui-primary) to-indigo-600 bg-clip-text text-transparent';
 
     let observer;
     $effect(() => {
-        const links = document.querySelectorAll('nav#header-links a');
-        activeClasses.forEach((className) => {
-            links[0].classList.add(className);
-        });
-
         observer = new IntersectionObserver(handleIntersection, {
             root: null, // Viewport
             threshold: 0.6, // 60% of section must be visible
@@ -46,17 +42,13 @@
     function addActiveToNav(name) {
         const links = document.querySelectorAll('nav#header-links a');
         links.forEach((link) => {
-            activeClasses.forEach((className) => {
-                link.classList.remove(className);
-            });
+            console.log(name, link.attributes['data-name'].value);
+            if(link.attributes['data-name'].value === name) {
+                link.className = defaultClasses + activeClasses;
+                return;
+            }
+            link.className = defaultClasses;
         });
-
-        const target = document.querySelector(`#header-links [data-name="${name}"]`);
-        if(target) {
-            activeClasses.forEach((className) => {
-                target.classList.add(className);
-            });
-        }
     }
 
     function handleIntersection(entries) {
