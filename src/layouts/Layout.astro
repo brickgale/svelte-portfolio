@@ -7,7 +7,7 @@ import "@styles/global.css";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<link id="favicon" rel="icon" type="image/svg+xml" href="/favicon-light.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Brian's Portfolio</title>
 	</head>
@@ -15,5 +15,17 @@ import "@styles/global.css";
 		<div class="main-container">
 			<slot />
 		</div>
+		<script is:inline>
+			const updateFavicon = (isDark) => {
+				const favicon = document.getElementById('favicon');
+				if (favicon) {
+					favicon.href = isDark ? '/favicon-dark.png' : '/favicon-light.png';
+				}
+			};
+		
+			const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			updateFavicon(mediaQuery.matches);
+			mediaQuery.addEventListener('change', (e) => updateFavicon(e.matches));
+		</script>
 	</body>
 </html>
