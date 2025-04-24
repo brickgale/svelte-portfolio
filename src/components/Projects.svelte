@@ -22,7 +22,7 @@
             imgSrc: '/projects/dating3.png',
             company: "Optimail Co. Ltd. / Moebius Development Co. Ltd.",
             date: "2018-2024",
-            description: "A multi domain dating app with theming built in to, it has messaging inside as well as push notifications for people to get notified whenever they got new messages or have been labeled as favorites for other users.",
+            description: "A multi domain dating app with theming, templating, localization, messaging, push notifications, and multiple payment gateway integrations.",
             url: "https://preview.datingdev.app/",
             hasLiveDemo: true,
             role: "Made the new version of the app from Laravel and Angularjs v2 to laravel 5 and vuejs v2, added the theming feature with total of 3 completed themes integrated within the app. Also added the push notification feature for the app. Overall responsible for the front end development of the app.From adding new features to fixing bugs. Considered myself the main contributer and maintainer of the app.",

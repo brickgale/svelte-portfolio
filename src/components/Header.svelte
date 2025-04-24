@@ -42,7 +42,6 @@
     function addActiveToNav(name) {
         const links = document.querySelectorAll('nav#header-links a');
         links.forEach((link) => {
-            console.log(name, link.attributes['data-name'].value);
             if(link.attributes['data-name'].value === name) {
                 link.className = defaultClasses + activeClasses;
                 return;
