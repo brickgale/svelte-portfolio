@@ -1,5 +1,5 @@
 
-<button type={props.type} class="relative flex overflow-hidden rounded-xl p-px">
+<button type={props.type} class="relative flex overflow-hidden rounded-xl p-px h-[46px] {props.btnclass}">
     {#if withBeam}
         <BorderBeam size={80} duration={4} />
     {/if}

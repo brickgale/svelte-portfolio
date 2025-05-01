@@ -3,19 +3,26 @@
         <div class="w-full title pb-10 md:pb-20">
             <h2 class="text-4xl text-center" data-aos="fade-up" data-aos-delay="100">Projects</h2>
         </div>
-        <div class="flex flex-row flex-wrap -m-2">
+        <div class="flex flex-row flex-wrap -m-2 mask-linear-to-bottom overflow-hidden {hideAll ? 'h-[450px]' : 'h-auto'}">
             {#each projects as project, key}
                 <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center" data-aos="fade-up" data-aos-delay={300+(50 * key)}>
                     <ProjectCard project={project} />
                 </div>
             {/each}
         </div>
+
+        <div class="btn-con flex justify-center relateive z-10" data-aos="fade-up" data-aos-delay="600">
+            <Button btnclass="z-10 -top-15" withBeam class="px-8" text="See More" on:click={() => { hideAll = false; console.log('click see more'); }} />
+        </div>
     </div>
 </section>
 
-<script>
+<script >
     import ProjectCard from '@components/ui/ProjectCard.svelte';
-    
+    import Button from '@components/ui/Button.svelte';
+
+    let hideAll = $state(true);
+     
     const projects = [
         {
             name: "Dating X",
