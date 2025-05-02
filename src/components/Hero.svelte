@@ -25,7 +25,7 @@
     </div>
 
     <div class="btn-con" data-aos="fade-up" data-aos-delay="700">
-        <Button sType="success" withBeam text="Download Resume" icon="download" on:click={() => downloadResume()}/>
+        <Button sType="success" withBeam text="Download Resume" icon="download" onclick={downloadResume}/>
     </div>
 
     

@@ -12,8 +12,8 @@
 
 @layer utilities {
     .mask-linear-to-bottom {
-        -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
-        mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, #000 20%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 20%, transparent 100%);
     }
 }
 

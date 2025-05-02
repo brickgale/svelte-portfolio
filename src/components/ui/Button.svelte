@@ -1,5 +1,5 @@
 
-<button type={props.type} class="relative flex overflow-hidden rounded-xl p-px h-[46px] {props.btnclass}">
+<button type={props.type} class="relative flex overflow-hidden rounded-xl p-px h-[46px] {props.btnclass}" onclick={props.onclick}>
     {#if withBeam}
         <BorderBeam size={80} duration={4} />
     {/if}
@@ -15,7 +15,7 @@
     import BorderBeam from "./BorderBeam.svelte";
 
     let props = $props();
-    let btnClass = $state('bg-neutral-950 text-gray-50');
+    let btnClass = $state('bg-neutral-950 text-gray-50 hover:bg-neutral-900');
     let withBeam = $state(false);
     withBeam = props.withBeam;
     if(props.sType == 'success') btnClass = 'bg-emerald-900 text-emerald-400 border border-emerald-900 hover:bg-emerald-800';
