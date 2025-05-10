@@ -4,10 +4,7 @@
         <BorderBeam size={80} duration={4} />
     {/if}
     <span class={['flex h-full w-full cursor-pointer items-center justify-center rounded-[11px] transition-colors ease-in-out duration-500', btnClass, 'px-4 py-2 text-sm font-medium backdrop-blur-3xl', props.class ]} >
-        {#if props.icon}
-            <i class="inline mr-2" data-lucide={props.icon}></i>
-        {/if} 
-        {props.text}
+        {@render props.children?.()}
     </span>
 </button>
 

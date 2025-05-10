@@ -12,7 +12,7 @@
         </div>
         {#if hideAll}
             <div class="btn-con flex justify-center relateive z-10" data-aos="fade-up" data-aos-delay="600">
-                <Button btnclass="z-20 -top-20" withBeam class="px-8" text="See More" onclick={seeMore} />
+                <Button btnclass="z-20 -top-20" withBeam class="px-8" onclick={seeMore}> See More </Button>
             </div>
         {/if}
     </div>

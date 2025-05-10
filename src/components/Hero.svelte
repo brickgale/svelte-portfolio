@@ -8,7 +8,7 @@
         />
     </div>
     <p class="mt-3 flex flex-row justify-center items-center gap-1 font-bold" data-aos="fade-up" data-aos-delay="600">
-        <i class="inline" width="18" height="18" data-lucide="map-pin"></i>Tagbilaran City, Bohol, Philippines
+        <MapPin size="18" /> Tagbilaran City, Bohol, Philippines
     </p>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -25,7 +25,9 @@
     </div>
 
     <div class="btn-con" data-aos="fade-up" data-aos-delay="700">
-        <Button sType="success" withBeam text="Download Resume" icon="download" onclick={downloadResume}/>
+        <Button sType="success" withBeam onclick={downloadResume}>
+            <Download size="18" class="mr-2" /> Download Resume
+        </Button>
     </div>
     
     <div class="min-h-[300px] md:min-h-[400px] w-full"></div>
@@ -34,6 +36,7 @@
 </section>
 
 <script>
+    import { MapPin, Download } from '@lucide/svelte';
     import programmer from '@assets/programmer.webp';
     import workstation from '@assets/workstation.png';
     import Button from '@components/ui/Button.svelte';
