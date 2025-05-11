@@ -12,14 +12,18 @@
                 <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
                     <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={300+(50 * key)}> 
                         {#snippet title()}
-                            {service.title}
+                            <div class="bg-black text-base p-3 shadow-lg rounded-md flex justify-center items-center">
+                                {service.title}
+                            </div>
                         {/snippet}
                         {#snippet content()}
                             {service.content}
                         {/snippet}
                         {#snippet footer()}
                            <p class="text-sm font-medium mb-2">Tech used: </p>
-                           <p class="text-xs">{service.tech}</p>
+                           {#each service.tech as tech}
+                                <Badge text={tech} outerClass="mr-1 mb-2" />
+                           {/each}
                         {/snippet}
                     </Card>
                 </div>
@@ -37,22 +41,23 @@
 <script>
     import Card from '@components/ui/Card.svelte';
     import BgDarkTiles from '@components/ui/BgDarkTiles.svelte';
+    import Badge from './ui/Badge.svelte';
 
     const services = [
         {
             title: 'UI/UX Design',
             content: 'Designing intuitive and engaging user interfaces across different devices that focuses in user experience that leads to conversions and user retention. Making sure that the design is consistent and easy to use.',
-            tech: 'Figma, Zeplin, Photoshop',
+            tech: ['Figma', 'Zeplin', 'Photoshop'],
         },
         {
             title: 'Frontend Development',
             content: 'Construct responsive and user-friendly websites using modern frontend libraries whether it is React, Vue, and Svelte. Utilizing state management and built in functions that choosen library provides.',
-            tech: 'Vanilla JS, JQuery, React, Vue, Svelte, TailwindCSS, Bootstrap',
+            tech: ['Vanilla JS', 'JQuery', 'React', 'Vue', 'Svelte', 'TailwindCSS', 'Bootstrap'],
         },
         {
             title: 'API Development',
             content: 'Building robust REST APIs, integrate different business logic, use industry standard authentication, implement proper security measures following best practices, and integrate payment gateways.',
-            tech: 'Laravel, Express, Prisma, MySQL, MongoDB, SQLite',
+            tech: ['Laravel', 'Express', 'Prisma', 'Drizzle', 'MySQL', 'PostgreSQL', 'MongoDB', 'SQLite'],
         },
     ];
 </script>
