@@ -22,7 +22,14 @@
         <!-- Desktop Navigation -->
         <nav id="desktop-nav" class="hidden md:flex" data-aos="fade-left" data-aos-delay="200">
             {#each anchors as anchor}
-                <a href={`#${anchor}`} data-name={anchor} class="text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300" onclick={(e) => handleClick(e, anchor)}>{anchor}</a>
+                <a 
+                    href={`#${anchor}`}
+                    data-name={anchor}
+                    class={anchorClasses(anchor)}
+                    onclick={(e) => handleClick(e, anchor)}
+                >
+                    {anchor}
+                </a>
             {/each}
         </nav>
 
@@ -31,14 +38,12 @@
             <div
                 id="mobile-nav"
                 class="fixed top-14 right-8 bg-opacity-80 flex flex-col items-center justify-center z-50"
-                onclick={() => (isMobileNavOpen = false)}
-                aria-label="Navigation"
             >
                 {#each anchors as anchor}
                     <a
                         href={`#${anchor}`}
                         data-name={anchor}
-                        class="text-2xl bg-black rounded-full px-5 py-2 m-3 text-white"
+                        class={anchorClasses(anchor, true)}
                         onclick={(e) => handleClick(e, anchor)}
                     >
                         {anchor}
@@ -51,12 +56,29 @@
 
 <script>
     import { XIcon, AlignRightIcon } from '@lucide/svelte';
-    const anchors = ['about', 'services', 'projects', 'contact'];
-    const defaultClasses = 'text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300';
-    const activeClasses = 'active bg-gradient-to-r from-(--ui-primary) to-indigo-600 bg-clip-text text-transparent';
 
     let observer;
     let isMobileNavOpen = $state(false);
+    let activeAnchor = $state('about');
+
+    const anchors = ['about', 'services', 'projects', 'contact'];
+    const defaultClasses = {
+        desktop: 'text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300',
+        mobile: 'text-2xl bg-black rounded-full px-5 py-2 m-4 text-white hover:bg-(--ui-primary) transition-colors duration-300',
+        
+    };
+    const activeClasses = {
+        desktop: 'active bg-gradient-to-r from-(--ui-primary) to-indigo-600 bg-clip-text text-transparent',
+        mobile: 'active bg-gradient-to-r from-(--ui-primary) to-indigo-600',   
+    };
+
+    const anchorClasses = (anchor, isMobile = false) => {
+        return activeAnchor === anchor ? `${getClass(defaultClasses, isMobile)} ${getClass(activeClasses, isMobile)}` : getClass(defaultClasses, isMobile);
+    };
+
+    const getClass = (classes, isMobile) => {
+        return isMobile ? classes.mobile : classes.desktop;
+    };
 
     $effect(() => {
         observer = new IntersectionObserver(handleIntersection, {
@@ -76,18 +98,12 @@
     function handleClick(e, name) {
         if (typeof name !== 'undefined') {
             addActiveToNav(name);
+            isMobileNavOpen = false;
         }
     }
 
     function addActiveToNav(name) {
-        const links = document.querySelectorAll('nav#desktop-nav a');
-        links.forEach((link) => {
-            if(link.attributes['data-name'].value === name) {
-                link.className = defaultClasses + activeClasses;
-                return;
-            }
-            link.className = defaultClasses;
-        });
+        activeAnchor = name;
     }
 
     function handleIntersection(entries) {
