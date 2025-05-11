@@ -20,7 +20,7 @@
         </button>
 
         <!-- Desktop Navigation -->
-        <nav id="header-links" class="hidden md:flex" data-aos="fade-left" data-aos-delay="200">
+        <nav id="desktop-nav" class="hidden md:flex" data-aos="fade-left" data-aos-delay="200">
             {#each anchors as anchor}
                 <a href={`#${anchor}`} data-name={anchor} class="text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300" onclick={(e) => handleClick(e, anchor)}>{anchor}</a>
             {/each}
@@ -29,7 +29,8 @@
         <!-- Mobile Navigation -->
         {#if isMobileNavOpen}
             <div
-                class="fixed top-12 right-8 bg-opacity-80 flex flex-col items-center justify-center z-50"
+                id="mobile-nav"
+                class="fixed top-14 right-8 bg-opacity-80 flex flex-col items-center justify-center z-50"
                 onclick={() => (isMobileNavOpen = false)}
                 aria-label="Navigation"
             >
@@ -37,7 +38,7 @@
                     <a
                         href={`#${anchor}`}
                         data-name={anchor}
-                        class="text-2xl bg-black rounded-full px-5 py-2 m-1 font-semibold text-white"
+                        class="text-2xl bg-black rounded-full px-5 py-2 m-3 text-white"
                         onclick={(e) => handleClick(e, anchor)}
                     >
                         {anchor}
@@ -79,12 +80,20 @@
     }
 
     function addActiveToNav(name) {
-        const links = document.querySelectorAll('nav#header-links a');
+        const links = document.querySelectorAll('nav#desktop-nav a');
         links.forEach((link) => {
-            if (link.attributes['data-name'].value === name) {
-                link.classList.add(activeClasses);
-            } else {
-                link.classList.remove(activeClasses);
+            if(link.attributes['data-name'].value === name) {
+                link.className = defaultClasses + activeClasses;
+                return;
+            }
+            link.className = defaultClasses;
+        });
+    }
+
+    function handleIntersection(entries) {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                addActiveToNav(entry.target.id);
             }
         });
     }
