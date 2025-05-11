@@ -12,7 +12,8 @@
                 <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
                     <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={300+(50 * key)}> 
                         {#snippet title()}
-                            <div class="bg-black text-base p-3 shadow-lg rounded-md flex justify-center items-center">
+                            <div class="bg-black text-base p-3 shadow-lg rounded-md flex justify-center items-center relative">
+                                <BgDots y={2} width={7} height={7} class="[mask-image:radial-gradient(200px_circle_at_center,white,transparent)] opacity-50" />
                                 {service.title}
                             </div>
                         {/snippet}
@@ -41,7 +42,8 @@
 <script>
     import Card from '@components/ui/Card.svelte';
     import BgDarkTiles from '@components/ui/BgDarkTiles.svelte';
-    import Badge from './ui/Badge.svelte';
+    import Badge from '@components/ui/Badge.svelte';
+    import BgDots from '@components/ui/BgDots.svelte';
 
     const services = [
         {

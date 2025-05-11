@@ -2,7 +2,8 @@
     <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class="wave">👋</span></h2>
     <h1 class="text-3xl sm:text-4xl md:text-5xl text-center font-bold" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-4xl md:text-6xl text-(--ui-primary)">Brian Monsales</span></h1>
     <div class="text-header h-[40px] lg:h-[60px] overflow-hidden" data-aos="fade-up" data-aos-delay="500">
-        <WordRotate height="40"
+        <WordRotate 
+            height="40"
             class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mt-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent text-shine" 
             words={["Full Stack Web Developer", "Frontend Web Developer", "Software Engineer"]}
         />
