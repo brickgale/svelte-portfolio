@@ -4,8 +4,10 @@
     </div>
     <div class="flex flex-row flex-wrap w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20 relative z-10">
         <div class="w-full title pb-10 md:pb-20">
-            <h2 class="text-2xl md:text-4xl pb-2" data-aos="fade-up" data-aos-delay="100">✨ Primary <span class="text-(--ui-primary)">Focuses</span></h2>
-            <h4 class="text-xl md:text-2xl" data-aos="fade-up" data-aos-delay="150">Core services offering</h4>
+            <h2 class="text-2xl md:text-4xl pb-2" data-aos="fade-up" data-aos-delay="100">Primary <span class="text-(--ui-primary)">Focuses</span></h2>
+            <div data-aos="fade-up" data-aos-delay="150">
+                <Badge text="✨ Core services offering" hideBeam outerClass="mr-1 mb-2" class="text-sm md:text-md px-3 bg-(--ui-primary)" />
+            </div>
         </div>
         <div class="flex flex-row flex-wrap -m-2">
             {#each services as service, key}
@@ -13,17 +15,19 @@
                     <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={300+(50 * key)}> 
                         {#snippet title()}
                             <div class="bg-black text-base p-3 shadow-lg rounded-md flex justify-center items-center relative">
-                                <BgDots y={2} width={7} height={7} class="[mask-image:radial-gradient(200px_circle_at_center,white,transparent)] opacity-50" />
+                                <BgDots y={2} width={7} height={7} class="[mask-image:radial-gradient(200px_circle_at_center,white,transparent)] opacity-30" />
                                 {service.title}
                             </div>
                         {/snippet}
                         {#snippet content()}
-                            {service.content}
+                            <p class="px-5 pt-0 pb-3">
+                                {service.content}
+                            </p>
                         {/snippet}
                         {#snippet footer()}
                            <p class="text-sm font-medium mb-2">Tech used: </p>
                            {#each service.tech as tech}
-                                <Badge text={tech} outerClass="mr-1 mb-2" />
+                                <Badge text={tech} outerClass="mr-1 mb-2" class="bg-black" />
                            {/each}
                         {/snippet}
                     </Card>

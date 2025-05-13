@@ -1,28 +1,25 @@
 <script>
+    import { cn } from "@lib/utils";
     import BorderBeam from "./BorderBeam.svelte";
 
     let props = $props();
 </script>
 
-<div {...props} class={'card flex flex-col rounded-md bg-gradient-to-br hover:bg-gradient-to-tl from-neutral-800 to-stone-700 min-h-[200px] relative '+ props.class}>
-    <BorderBeam size={150} duration={8} />
-    <div class="card-title text-xl md:text-2xl p-5 text-gray-200 font-medium">
-        {@render props.title?.()}
-    </div>
-    <div class="card-content px-5 py-2 flex-grow-2 text-gray-300 font-light">
+<div {...props} class={cn('card flex flex-col rounded-md bg-gradient-to-br hover:bg-gradient-to-tl from-neutral-800 to-stone-700 relative border border-gray-400',props.class)}>
+    {#if !props.hideBeam}
+        <BorderBeam size={150} duration={8} />
+    {/if}
+    {#if props.title}
+        <div class="card-title text-xl md:text-2xl p-5 text-gray-200 font-medium">
+            {@render props.title?.()}
+        </div>
+    {/if}
+    <div class="card-content flex-grow-2 text-gray-300 font-light">
         {@render props.content?.()}
     </div>
-    <div class="card-footer px-5 py-2 min-h-[105px] text-gray-300 font-light">
-        {@render props.footer?.()}
-    </div>
+    {#if props.footer}
+        <div class="card-footer px-5 py-2 min-h-[105px] text-gray-300 font-light">
+            {@render props.footer?.()}
+        </div>
+    {/if}
 </div>
-
-<style>
-    .card {
-        border: 1px solid rgba(255,255,255, 0.3);
-        transition: .3s ease-in-out;
-    }
-    .card:hover {
-        transition: 1.5s ease-in-out;
-    }
-</style>
