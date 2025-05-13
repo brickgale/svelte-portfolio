@@ -1,5 +1,7 @@
 <section id="contact" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden px-4 sm:px-6 lg:px-8">
-    <Card class="max-w-[500px] w-full p-6 shadow-lg rounded-lg border-0" hideBeam>
+    <BgDots width={12} height={12} class="[mask-image:radial-gradient(400px_circle_at_center,white,transparent)] opacity-80" />
+    <Card class="max-w-[500px] w-full p-6 rounded-lg border-0 overflow-hidden" hideBeam>
+        <Meteors number={30} />
         {#snippet content()}
             <div class="flex flex-col gap-4">
                 <div class="flex flex-row items-center gap-5 w-full">
@@ -13,7 +15,8 @@
                                 </a>
                             {/each}
                         </div>
-                        <p class="text-gray-300 text-sm mb-1 font-outfit">
+                        <p class="text-gray-300 text-sm mb-1 font-outfit relative">
+                            <span class="rounded-full w-2 h-2 bg-green-400 inline-block absolute top-[6px] animate-ping"></span>
                             <span class="rounded-full w-2 h-2 bg-green-400 inline-block relative -top-[1px] mr-1"></span>
                             Available for work
                         </p>
@@ -44,6 +47,8 @@
     import { Dribbble, Github, Linkedin, Mail, Copy } from '@lucide/svelte';
     import Card from '@components/ui/Card.svelte';
     import Button from '@components/ui/Button.svelte';
+    import BgDots from '@components/ui/BgDots.svelte';
+    import Meteors from '@components/ui/Meteors.svelte';
     
     const email = 'brianmonsales@gmail.com';
 

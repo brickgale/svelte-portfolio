@@ -70,7 +70,7 @@ h1,h2,h3,h4,h5,h6 {
     animation-play-state: paused;
 }
 
-.wave {
+.animate-wave {
     animation-name: helloWave;
     animation-duration: 2.5s;
     animation-iteration-count: infinite;

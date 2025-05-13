@@ -1,5 +1,5 @@
 <section id="about" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-5 relative">
-    <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class="wave">👋</span></h2>
+    <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class="animate-wave">👋</span></h2>
     <h1 class="text-2xl md:text-5xl text-center font-bold" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-4xl md:text-6xl text-(--ui-primary)">Brian Monsales</span></h1>
     <div class="text-header h-[40px] sm:h-[45px] md:h-[60px] overflow-hidden" data-aos="fade-up" data-aos-delay="500">
         <WordRotate 
