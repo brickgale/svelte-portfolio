@@ -3,13 +3,14 @@
     {#if withBeam}
         <BorderBeam size={80} duration={4} />
     {/if}
-    <span class={['flex h-full w-full cursor-pointer items-center justify-center rounded-[11px] transition-colors ease-in-out duration-500', btnClass, 'px-4 py-2 text-sm font-medium backdrop-blur-3xl', props.class ]} >
+    <span class={cn('flex h-full w-full cursor-pointer items-center justify-center rounded-[11px] transition-colors ease-in-out duration-500', btnClass, props.class, 'px-4 py-2 text-sm font-medium backdrop-blur-3xl')} >
         {@render props.children?.()}
     </span>
 </button>
 
 <script>
     import BorderBeam from "./BorderBeam.svelte";
+    import { cn } from "@lib/utils";
 
     let props = $props();
     let btnClass = $state('bg-neutral-950 text-gray-50 hover:bg-neutral-900');

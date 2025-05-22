@@ -39,7 +39,7 @@
 <script>
     import { MapPin, Download } from '@lucide/svelte';
     import programmer from '@assets/programmer.webp';
-    import workstation from '@assets/workstation.png';
+    import workstation from '@assets/workstation.gif';
     import Button from '@components/ui/Button.svelte';
     import WordRotate from '@components/ui/WordRotate.svelte';
 

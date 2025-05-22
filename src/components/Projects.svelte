@@ -31,7 +31,7 @@
     const projects = [
         {
             name: "Dating X",
-            imgSrc: '/projects/dating3.png',
+            imgSrc: '/projects/dating3.jpg',
             company: "Optimail Co. Ltd. / Moebius Development Co. Ltd.",
             date: "2018-2024",
             description: "A multi domain dating app with theming, templating, localization, messaging, push notifications, and multiple payment gateway integrations.",
@@ -41,7 +41,7 @@
         },
         {
             name: "Skill Shift",
-            imgSrc: '/projects/skillshift.png',
+            imgSrc: '/projects/skillshift.jpg',
             company: "Freemight / Monstarlab Cebu",
             date: "2017-2018",
             description: "A japanese job posting board that allows part time worksers to find jobs throughout Japan. You can filter out which prefecture / region you want to apply and what type of job you want.",
@@ -52,7 +52,7 @@
         },
         {
             name: "Mee2box",
-            imgSrc: '/projects/mee2box1.png',
+            imgSrc: '/projects/mee2box1.jpg',
             company: "Freemight / Monstarlab Cebu",
             date: "2017",
             description: "A japanese zoom-like video conferencing web app that allows you to create a room and invite clients to join, it allows file sharing inside the meeting as well so that you could brainstorm efficiently.",
@@ -62,7 +62,7 @@
         },
         {
             name: "Amsale",
-            imgSrc: '/projects/amsale.png',
+            imgSrc: '/projects/amsale.jpg',
             company: "Sliding Monkey Web Development",
             date: "2016",
             description: "Ecommerce website that was built with Magento mixed with Wordpress. Selling wedding dresses and other wedding related products. Contains color swatches and product customizations.",
@@ -72,7 +72,7 @@
         },
         {
             name: "Kidsshoes",
-            imgSrc: '/projects/kiddshoes.png',
+            imgSrc: '/projects/kiddshoes.jpg',
             company: "Sliding Monkey Web Development",
             date: "2016",
             description: "Shopify website for, you guessed it, kids' shoes. It contains a lot of products and categories. Updating promos and sales depending on the season.",
@@ -82,7 +82,7 @@
         },
         {
             name: "iAssess",
-            imgSrc: '/projects/iassess.png',
+            imgSrc: '/projects/iassess.jpg',
             company: "Nerubia Web Solutions",
             date: "2015-2016",
             description: "An Assessment Platform for candidates to certain companies in Singapore. There were complex algorithms with different exam types that would generate candidates scores / results unto pdfs. It was a quite data heavy app, couple thousands of records for each exam. It was built with Laravel 4 and AngularJS v2.",
@@ -92,7 +92,7 @@
         },
         {
             name: "Groupjump",
-            imgSrc: '/projects/groupjump.png',
+            imgSrc: '/projects/groupjump.jpg',
             company: "NextIX Inc.",
             date: "2014-2015",
             description: "Social Media Web App that introduces \"jumpsites\", which is a facebook group-like feature where you can join and interact and socialize with like-minded people. This was running Laravel 4 and jQuery.",
@@ -102,7 +102,7 @@
         },
         {
             name: "Helpyoumarry",
-            imgSrc: '/projects/helpyoumarry.png',
+            imgSrc: '/projects/helpyoumarry.jpg',
             company: "QLICK & PAIR",
             date: "2013",
             description: "Wordpress website for a Wedding Planner. Built with Wordpress and a custom theme using Bootstrap CSS and jQuery.",
@@ -112,7 +112,7 @@
         },
         {
             name: "QuickQuotz",
-            imgSrc: '/projects/quickquotz.png',
+            imgSrc: '/projects/quickquotz.jpg',
             company: "QLICK & PAIR",
             date: "2013",
             description: "Wordpress website that showcases images with quotes with different categories (ex: inspirational, relationships, and etc).",
@@ -122,7 +122,7 @@
         },
         {
             name: "Mocha Chai Laboratories",
-            imgSrc: '/projects/mochachai.png',
+            imgSrc: '/projects/mochachai.jpg',
             company: "iCreative Solution",
             date: "2013",
             description: "Wordpress website for a Boutique Hotel located in Malaysia. Built with Wordpress and a custom theme using Bootstrap CSS and jQuery.",
@@ -132,7 +132,7 @@
         },
         {
             name: "IamJazz",
-            imgSrc: '/projects/iamjazz.png',
+            imgSrc: '/projects/iamjazz.jpg',
             company: "iCreative Solution",
             date: "2013",
             description: "Wordpress website for a Boutique Hotel located in Malaysia. Built with Wordpress and a custom theme using custom CSs and jQuery.",

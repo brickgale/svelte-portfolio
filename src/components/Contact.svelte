@@ -1,9 +1,9 @@
 <section id="contact" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden px-4 sm:px-6 lg:px-8">
     <BgDots width={12} height={12} class="[mask-image:radial-gradient(400px_circle_at_center,white,transparent)] opacity-80" />
-    <Card class="max-w-[500px] w-full p-6 rounded-lg border-0 overflow-hidden" hideBeam>
+    <Card class="max-w-[500px] w-full p-6 rounded-lg overflow-hidden" hideBeam data-aos="zoom-out" data-aos-delay="100">
         <Meteors number={30} />
         {#snippet content()}
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-4 relative z-10">
                 <div class="flex flex-row items-center gap-5 w-full">
                     <img src="/profile-pic.jpg" class="rounded-full w-24 h-24" alt="profile pic" />
                     <div class="flex flex-col">
@@ -25,7 +25,7 @@
                 <div class="w-full">
                     <div class="flex flex-row flex-wrap -m-2">
                         <div class="w-1/2 p-2">
-                            <Button withBeam type="primary" btnclass="w-full" onclick={handleMailto}>
+                            <Button withBeam type="primary" btnclass="w-full" class="hover:text-(--ui-primary)" onclick={handleMailto}>
                                 <Mail size={16} class="mr-2" />
                                 Email Me
                             </Button>
