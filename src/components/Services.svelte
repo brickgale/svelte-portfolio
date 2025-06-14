@@ -9,25 +9,25 @@
                 <Badge text="✨ Core services offering" hideBeam outerClass="mr-1 mb-2" class="text-sm md:text-md px-3 bg-(--ui-primary)" />
             </div>
         </div>
-        <div class="flex flex-row flex-wrap -m-2">
+        <div class="flex flex-row flex-wrap -m-3">
             {#each services as service, key}
-                <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center">
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-3 flex justify-center">
                     <Card class="min-h-[200px]" data-aos="fade-up" data-aos-delay={300+(50 * key)}> 
                         {#snippet title()}
                             <div class="bg-black text-base p-3 shadow-lg rounded-md flex justify-center items-center relative">
-                                <BgDots y={2} width={7} height={7} class="[mask-image:radial-gradient(200px_circle_at_center,white,transparent)] opacity-30" />
+                                <BgDots y={2} width={8} height={8} class="[mask-image:radial-gradient(300px_circle_at_center,white,transparent)] opacity-20" />
                                 {service.title}
                             </div>
                         {/snippet}
                         {#snippet content()}
-                            <p class="px-5 pt-0 pb-3">
+                            <p class="px-6 pt-0 pb-3">
                                 {service.content}
                             </p>
                         {/snippet}
                         {#snippet footer()}
-                           <p class="text-sm font-medium mb-2">Tech used: </p>
+                           <p class="text-sm font-medium mb-2 muted">Tech used: </p>
                            {#each service.tech as tech}
-                                <Badge text={tech} outerClass="mr-1 mb-2" class="bg-black" />
+                                <Badge text={tech} outerClass="mr-1 mb-2" class="bg-black" hideBeam />
                            {/each}
                         {/snippet}
                     </Card>

@@ -52,5 +52,6 @@
 
     function downloadResume () {
         console.log('downloading...')
+        window.open('https://brian.monsales.net/Resume-2025.pdf', '_blank');
     }
 </script>

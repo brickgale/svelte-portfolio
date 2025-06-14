@@ -1,6 +1,6 @@
 <section id="contact" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden px-4 sm:px-6 lg:px-8">
     <BgDots width={12} height={12} class="[mask-image:radial-gradient(400px_circle_at_center,white,transparent)] opacity-80" />
-    <Card class="max-w-[500px] w-full p-6 rounded-lg overflow-hidden" hideBeam data-aos="zoom-out" data-aos-delay="100">
+    <Card class="max-w-[500px] w-full p-6 rounded-lg overflow-hidden border border-gray-500" hideBeam data-aos="zoom-out" data-aos-delay="100">
         <Meteors number={30} />
         {#snippet content()}
             <div class="flex flex-col gap-4 relative z-10">

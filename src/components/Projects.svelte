@@ -1,17 +1,20 @@
 <section id="projects" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden">
     <div class="flex flex-col w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20 relative z-10">
         <div class="w-full title pb-10 md:pb-20">
-            <h2 class="text-3xl md:text-4xl text-center" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">Projects</h2>
+            <h2 class="text-2xl md:text-4xl pb-2 text-center" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">Projects</h2>
+            <div data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="text-center">
+                <Badge text="✨ What I've Built So Far" hideBeam outerClass="mr-1 mb-2" class="text-sm md:text-md px-3 bg-(--ui-primary)" />
+            </div>
         </div>
         <div class="flex flex-row flex-wrap -m-2 overflow-hidden {hideAll ? 'mask-linear-to-bottom h-[500px] md:h-[450px]' : 'h-auto'}">
             {#each projects as project, key}
-                <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center" data-aos="fade-up" data-aos-delay={300+(50 * key)} data-aos-once="true">
+                <div class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center" data-aos="zoom-in" data-aos-delay={300+(50 * key)} data-aos-once="true">
                     <ProjectCard project={project} />
                 </div>
             {/each}
         </div>
         {#if hideAll}
-            <div class="btn-con flex justify-center relateive z-10" data-aos="fade-up" data-aos-delay="600">
+            <div class="btn-con flex justify-center relateive z-10" data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
                 <Button btnclass="z-20 -top-20" withBeam class="px-8" onclick={seeMore}> See More </Button>
             </div>
         {/if}
@@ -21,6 +24,7 @@
 <script>
     import ProjectCard from '@components/ui/ProjectCard.svelte';
     import Button from '@components/ui/Button.svelte';
+    import Badge from '@components/ui/Badge.svelte';
 
     let hideAll = $state(true);
 
