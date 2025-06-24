@@ -41,7 +41,7 @@
         src="{project.imgSrc}"
         placeholder="blur"
         alt="{project.name}"
-        class="w-full object-cover object-top m-0 transition-all ease-linear {isScrollable ? 'h-full group-hover:object-bottom' : ''}"
+        class="w-full h-full object-cover object-top m-0 transition-all ease-linear {isScrollable ? 'group-hover:object-bottom' : ''}"
         style="transition-duration: {scrollDuration}ms;"
         onload={checkScrollable}
     />
