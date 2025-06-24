@@ -31,7 +31,7 @@
                             </Button>
                         </div>
                         <div class="w-1/2 p-2">
-                            <Button type="primary" btnclass="w-full" onclick={copyToClipboard(email)}>
+                            <Button type="primary" btnclass="w-full" class="hover:text-(--ui-primary)" onclick={copyToClipboard(email)}>
                                 <Copy size={16} class="mr-2" />
                                 Copy Email
                             </Button>

@@ -3,7 +3,7 @@
         <div class="w-full title pb-10 md:pb-20">
             <h2 class="text-2xl md:text-4xl pb-2 text-center" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">Projects</h2>
             <div data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="text-center">
-                <Badge text="✨ What I've Built So Far" hideBeam outerClass="mr-1 mb-2" class="text-sm md:text-md px-3 bg-(--ui-primary)" />
+                <Badge text="✨ What I've Worked On So Far" hideBeam outerClass="mr-1 mb-2" class="text-sm md:text-md px-3 bg-(--ui-primary)" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap -m-2 overflow-hidden {hideAll ? 'mask-linear-to-bottom h-[500px] md:h-[450px]' : 'h-auto'}">
@@ -14,7 +14,7 @@
             {/each}
         </div>
         {#if hideAll}
-            <div class="btn-con flex justify-center relateive z-10" data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
+            <div class="h-50 btn-con flex justify-center relative z-10 transition-all duration-500 ease-out {isHiding ? 'opacity-0' : 'opacity-100'}" data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
                 <Button btnclass="z-20 -top-20" withBeam class="px-8" onclick={seeMore}> See More </Button>
             </div>
         {/if}
@@ -27,9 +27,14 @@
     import Badge from '@components/ui/Badge.svelte';
 
     let hideAll = $state(true);
+    let isHiding = $state(false);
 
     function seeMore() {
-        hideAll = false;
+        isHiding = true;
+        // Wait for the fade-out animation to complete before hiding the container
+        setTimeout(() => {
+            hideAll = false;
+        }, 500);
     }
      
     const projects = [
