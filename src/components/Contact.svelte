@@ -10,7 +10,7 @@
                         <h4 class="text-xl font-bold mb-2">Brian Monsales</h4>
                         <div class="socials mb-2 flex flex-row gap-2">
                             {#each socialLinks as social }
-                                <a href="{social.link}" target="_blank" rel="noopener noreferrer">
+                                <a href="{social.link}" target="_blank" rel="noopener noreferrer" aria-label="{social.name}">
                                     <svelte:component this={social.icon} size={20} class="text-gray-200 hover:text-(--ui-primary) transition-all duration-300" />
                                 </a>
                             {/each}
@@ -67,8 +67,8 @@
     }
 
     const socialLinks = [
-        { icon: Dribbble, link: 'https://dribbble.com/brickgale' },
-        { icon: Github, link: 'https://github.com/brickgale' },
-        { icon: Linkedin, link: 'https://www.linkedin.com/in/brianmonsales/' },
+        { icon: Dribbble, link: 'https://dribbble.com/brickgale', name: 'Dribbble Profile' },
+        { icon: Github, link: 'https://github.com/brickgale', name: 'GitHub Profile' },
+        { icon: Linkedin, link: 'https://www.linkedin.com/in/brianmonsales/', name: 'LinkedIn Profile' },
     ]
 </script>
