@@ -1,9 +1,12 @@
 <script lang="ts">
     import { cn } from "@lib/utils";
+    import { getPerformanceLevel } from "@lib/performance";
     import { onMount } from "svelte";
 
     export let number = 10;
     let meteorStyles: any = [];
+    let actualNumber = number;
+    
     const changeMeteors = (num: number) => {
         meteorStyles = [];
         const styles = [...new Array(num)].map(() => ({
@@ -14,8 +17,19 @@
         }));
         meteorStyles = styles;
     };
+    
     onMount(() => {
-        changeMeteors(number);
+        // Adjust meteor count based on performance
+        const perfLevel = getPerformanceLevel();
+        if (perfLevel === 'low') {
+            actualNumber = 0; // Disable meteors completely on low performance
+        } else if (perfLevel === 'medium') {
+            actualNumber = Math.floor(number / 2); // Reduce by half
+        } else {
+            actualNumber = number;
+        }
+        
+        changeMeteors(actualNumber);
     });
 </script>
 

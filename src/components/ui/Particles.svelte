@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { shouldEnableHeavyEffects } from "@lib/performance";
 
   export let className: string = "";
   export let quantity: number = 100;
@@ -16,6 +17,8 @@
   let circles: any[] = [];
   let mouse = { x: 0, y: 0 };
   let canvasSize = { w: 0, h: 0 };
+  let enabled = true;
+  let animationId: number | null = null;
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
   function hexToRgb(hex: string): number[] {
@@ -112,6 +115,8 @@
   }
 
   function animate() {
+    if (!enabled) return;
+    
     clearContext();
     circles.forEach((circle, i) => {
       const edge = [
@@ -152,7 +157,7 @@
         drawCircle(newCircle);
       }
     });
-    window.requestAnimationFrame(animate);
+    animationId = window.requestAnimationFrame(animate);
   }
 
   function onMouseMove(event: MouseEvent) {
@@ -170,6 +175,14 @@
   }
 
   onMount(() => {
+    // Check if heavy effects should be enabled
+    enabled = shouldEnableHeavyEffects();
+    
+    if (!enabled) {
+      // Don't initialize canvas animation on low-performance devices
+      return;
+    }
+    
     if (canvasRef) {
       context = canvasRef.getContext("2d");
       resizeCanvas();
@@ -179,6 +192,9 @@
     }
 
     return () => {
+      if (animationId) {
+        window.cancelAnimationFrame(animationId);
+      }
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", onMouseMove);
     };
