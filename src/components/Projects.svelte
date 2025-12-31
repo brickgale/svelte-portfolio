@@ -34,7 +34,7 @@
         // Wait for the fade-out animation to complete before hiding the container
         setTimeout(() => {
             hideAll = false;
-        }, 500);
+        }, 200);
     }
      
     const projects = [

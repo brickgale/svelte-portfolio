@@ -8,8 +8,8 @@
             words={["Full Stack Web Developer", "Frontend Web Developer", "Software Engineer"]}
         />
     </div>
-    <p class="mt-3 flex flex-row justify-center items-center gap-1 font-bold" data-aos="fade-up" data-aos-delay="600">
-        <MapPin size="18" /> Tagbilaran City, Bohol, Philippines
+    <p class="mt-3 flex flex-row justify-center items-center gap-1 text-xs font-light tracking-wide px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/20" data-aos="fade-up" data-aos-delay="600">
+        <MapPin size="14" /> Tagbilaran City, Bohol, Philippines
     </p>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
