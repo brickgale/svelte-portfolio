@@ -19,7 +19,7 @@
         {@render props.content?.()}
     </div>
     {#if props.footer}
-        <div class="card-footer px-6 py-2 min-h-[105px] text-gray-300 font-light">
+        <div class="card-footer px-6 py-2 min-h-[80px] text-gray-300 font-light">
             {@render props.footer?.()}
         </div>
     {/if}

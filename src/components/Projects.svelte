@@ -1,9 +1,9 @@
-<section id="projects" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 overflow-hidden">
+<section id="projects" class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 md:py-30 overflow-hidden">
     <div class="flex flex-col w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20 relative z-10">
         <div class="w-full title pb-10 md:pb-20">
-            <h2 class="text-2xl md:text-4xl pb-2 text-center" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">Projects</h2>
+            <h2 class="text-2xl md:text-4xl pb-2 text-center tracking-wide" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">Projects</h2>
             <div data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="text-center">
-                <Badge text="✨ What I've Worked On So Far" hideBeam outerClass="mr-1 mb-2" class="text-sm md:text-md px-3 bg-(--ui-primary)" />
+                <Badge text="🚀 What I've Worked On So Far" hideBeam outerClass="mr-1 mb-2" class="px-3 border-[1.5px] border-(--ui-primary) bg-transparent" />
             </div>
         </div>
         <div class="flex flex-row flex-wrap -m-2 overflow-hidden {hideAll ? 'mask-linear-to-bottom h-[500px] md:h-[450px]' : 'h-auto'}">
