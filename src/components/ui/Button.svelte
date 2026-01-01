@@ -15,5 +15,5 @@
     let btnClass = $state('bg-neutral-950 text-gray-50 hover:bg-neutral-900 hover:shadow-lg');
     let withBeam = $state(false);
     withBeam = props.withBeam;
-    if(props.sType == 'success') btnClass = 'bg-emerald-900 text-emerald-400 border border-emerald-900 hover:bg-emerald-800 hover:shadow-emerald-900/50 hover:shadow-lg';
+    if(props.sType == 'success') btnClass = 'bg-emerald-900 text-emerald-400 border border-emerald-900 hover:text-emerald-200 hover:shadow-emerald-900/50 hover:shadow-lg';
 </script>

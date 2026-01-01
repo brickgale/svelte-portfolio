@@ -15,7 +15,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div class="relative overflow-x-hidden py-8 infinite-scroll-container" data-aos="fade-up" data-aos-delay="700">
             <div class="flex gap-12 md:gap-20 w-max p-6" class:animate-scroll={enableAnimations}>
-            {#each tech as t}
+            {#each techDuplicated as t}
                 <div class="flex items-center gap-2 group transition-all duration-300">
                     <img src={`/svg_icons/${t.svg_name}.svg`} alt={t.name} class="h-7 w-auto object-contain transition-transform group-hover:scale-110 opacity-60" />
                     {t.name}
@@ -51,6 +51,9 @@
         {name: 'Javascript', svg_name: 'javascript'}, {name: 'Typescript', svg_name: 'typescript'}, {name: 'NodeJs', svg_name: 'nodejs'},
         {name: 'Laravel', svg_name: 'laravel'}, {name: 'PHP', svg_name: 'php'}, {name: 'MySQL', svg_name: 'mysql'}, {name: 'MongoDB', svg_name: 'mongodb'},
     ]
+    
+    // Duplicate the array for seamless infinite scroll
+    const techDuplicated = [...tech, ...tech];
     
     let enableAnimations = true;
     
