@@ -21,7 +21,7 @@
         </button>
 
         <!-- Desktop Navigation -->
-        <nav id="desktop-nav" class="hidden md:flex" data-aos="fade-left" data-aos-delay="200">
+        <nav id="desktop-nav" class="hidden md:flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-2 rounded-full border border-white/10" data-aos="fade-left" data-aos-delay="200">
             {#each anchors as anchor}
                 <a 
                     href={`#${anchor}`}
@@ -76,12 +76,12 @@
 
     const anchors = ['about', 'services', 'projects', 'contact'];
     const defaultClasses: ClassConfig = {
-        desktop: 'text-lg font-semibold mx-4 hover:text-(--ui-primary) transition-colors duration-300',
+        desktop: 'text-sm font-medium px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 capitalize',
         mobile: 'text-xl font-semibold py-4 px-6 my-2 text-white/90 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300 capitalize border-l-2 border-transparent hover:border-(--ui-primary) mobile-nav-item',
         
     };
     const activeClasses: ClassConfig = {
-        desktop: 'active bg-gradient-to-r from-(--ui-primary) to-indigo-600 bg-clip-text text-transparent',
+        desktop: 'active !bg-gradient-to-r from-(--ui-primary) to-indigo-600 !text-white shadow-lg shadow-(--ui-primary)/20',
         mobile: 'active !text-white !bg-gradient-to-r from-(--ui-primary)/20 to-indigo-600/20 !border-(--ui-primary)',   
     };
 
