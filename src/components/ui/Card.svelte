@@ -5,7 +5,7 @@
     let props = $props();
 </script>
 
-<div {...props} class={cn('card flex flex-col rounded-md bg-gradient-to-br hover:bg-gradient-to-tl from-neutral-800 to-stone-700 relative',props.class)}>
+<div {...props} class={cn('card flex flex-col rounded-md bg-gradient-to-br to-stone-700',props.class)}>
     {@render props.children?.()}
     {#if !props.hideBeam}
         <BorderBeam size={150} duration={8} />

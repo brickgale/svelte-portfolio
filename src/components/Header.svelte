@@ -1,4 +1,4 @@
-<header class="flex fixed w-full top-0 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur ">
+<header class="flex fixed w-full top-0 left-1/2 transform -translate-x-1/2 z-50">
     <div class="flex justify-between items-center py-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-50">
         <a href="#about" onclick={(e) => handleClick(e, 'about')} class="text-2xl font-bold relative" data-aos="fade-right" data-aos-delay="200" aria-label="logo">
             <span class="logo w-8 h-8 top-1 md:w-10 md:h-10 inline-block bg-white hover:bg-(--ui-primary) relative z-20"></span>

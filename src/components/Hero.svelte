@@ -1,10 +1,12 @@
 <section id="about" class="min-h-screen w-full flex flex-col items-center justify-center py-20 px-5 relative">
     <h2 class="text-2xl md:text-3xl font-bold text-center" data-aos="fade-up" data-aos-delay="200">Hey there <span class:animate-wave={enableAnimations}>👋</span></h2>
-    <h1 class="text-2xl md:text-5xl text-center font-bold" data-aos="fade-up" data-aos-delay="400">I'm <span class="text-4xl md:text-6xl text-(--ui-primary)">Brian Monsales</span></h1>
+    <h1 class="text-2xl md:text-5xl text-center font-bold" data-aos="fade-up" data-aos-delay="400">
+        I'm &nbsp;<span class="font-gothic text-3xl md:text-6xl text-(--ui-primary)">Brian Monsales</span>
+    </h1>
     <div class="text-header h-[40px] sm:h-[45px] md:h-[60px] overflow-hidden" data-aos="fade-up" data-aos-delay="500">
         <WordRotate 
             height="40"
-            class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mt-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent {enableAnimations ? 'text-shine' : ''}" 
+            class="font-fira text-2xl sm:text-3xl md:text-4xl font-bold text-center mt-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent {enableAnimations ? 'text-shine' : ''}" 
             words={["Full Stack Web Developer", "Frontend Web Developer", "Software Engineer"]}
         />
     </div>
@@ -13,8 +15,8 @@
     </p>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div class="relative overflow-x-hidden py-8 infinite-scroll-container" data-aos="fade-up" data-aos-delay="700">
-            <div class="flex gap-12 md:gap-20 w-max p-6" class:animate-scroll={enableAnimations}>
+        <div class="relative overflow-x-hidden py-4 md:py-8 infinite-scroll-container" data-aos="fade-up" data-aos-delay="700">
+            <div class="flex gap-12 md:gap-20 w-max py-3 md:p-6" class:animate-scroll={enableAnimations}>
             {#each techDuplicated as t}
                 <div class="flex items-center gap-2 group transition-all duration-300">
                     <img src={`/svg_icons/${t.svg_name}.svg`} alt={t.name} class="h-7 w-auto object-contain transition-transform group-hover:scale-110 opacity-60" />
