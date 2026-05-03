@@ -109,14 +109,13 @@
   }
 
   function remapValue(value, start1, end1, start2, end2) {
-    let remapped =
-      ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
+    let remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
     return remapped > 0 ? remapped : 0;
   }
 
   function animate() {
     if (!enabled) return;
-    
+
     clearContext();
     circles.forEach((circle, i) => {
       const edge = [
@@ -126,9 +125,7 @@
         canvasSize.h - circle.y - circle.translateY - circle.size,
       ];
       const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-      const remapClosestEdge = parseFloat(
-        remapValue(closestEdge, 0, 20, 0, 1).toFixed(2)
-      );
+      const remapClosestEdge = parseFloat(remapValue(closestEdge, 0, 20, 0, 1).toFixed(2));
       if (remapClosestEdge > 1) {
         circle.alpha += 0.02;
         if (circle.alpha > circle.targetAlpha) {
@@ -139,10 +136,8 @@
       }
       circle.x += circle.dx + vx;
       circle.y += circle.dy + vy;
-      circle.translateX +=
-        (mouse.x / (staticity / circle.magnetism) - circle.translateX) / ease;
-      circle.translateY +=
-        (mouse.y / (staticity / circle.magnetism) - circle.translateY) / ease;
+      circle.translateX += (mouse.x / (staticity / circle.magnetism) - circle.translateX) / ease;
+      circle.translateY += (mouse.y / (staticity / circle.magnetism) - circle.translateY) / ease;
 
       drawCircle(circle, true);
 
@@ -177,12 +172,12 @@
   onMount(() => {
     // Check if heavy effects should be enabled
     enabled = shouldEnableHeavyEffects();
-    
+
     if (!enabled) {
       // Don't initialize canvas animation on low-performance devices
       return;
     }
-    
+
     if (canvasRef) {
       context = canvasRef.getContext("2d");
       resizeCanvas();

@@ -1,0 +1,8 @@
+node_modules
+dist
+.astro
+*.config.js
+*.config.mjs
+*.config.cjs
+pnpm-lock.yaml
+package-lock.json

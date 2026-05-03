@@ -16,15 +16,15 @@
     return () => clearInterval(interval);
   });
 </script>
-  
-<div {...props} class="overflow-hidden ">
+
+<div {...props} class="overflow-hidden">
   {#key index}
     <div
       in:fly={{ y: -50, delay: 200 }}
       out:fly={{ y: 40, duration: 200 }}
       class={cn(props.class, "text-center")}
     >
-        {props.words[index]}
+      {props.words[index]}
     </div>
   {/key}
 </div>

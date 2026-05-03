@@ -4,33 +4,36 @@ import "@styles/global.css";
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link id="favicon" rel="icon" type="image/svg+xml" href="/favicon-light.png" />
-		<meta property="og:title" content="Brian Monsales / Portfolio" />
-		<meta property="og:description" content="Software Engineer | Web Developer | Full-Stack Engineer" />
-		<meta property="og:image" content="https://brian.monsales.net/thumbnail.png" />
-		<meta property="og:url" content="https://brian.monsales.net/" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Brian Monsales / Portfolio</title>
-		<meta name="description" content="Software Engineer | Web Developer | Full-Stack Engineer" />
-	</head>
-	<body>
-		<div class="main-container">
-			<slot />
-		</div>
-		<script is:inline>
-			const updateFavicon = (isDark) => {
-				const favicon = document.getElementById('favicon');
-				if (favicon) {
-					favicon.href = isDark ? '/favicon-dark.png' : '/favicon-light.png';
-				}
-			};
-		
-			const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-			updateFavicon(mediaQuery.matches);
-			mediaQuery.addEventListener('change', (e) => updateFavicon(e.matches));
-		</script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon-light.png" />
+    <meta property="og:title" content="Brian Monsales / Portfolio" />
+    <meta
+      property="og:description"
+      content="Software Engineer | Web Developer | Full-Stack Engineer"
+    />
+    <meta property="og:image" content="https://brian.monsales.net/thumbnail.png" />
+    <meta property="og:url" content="https://brian.monsales.net/" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Brian Monsales / Portfolio</title>
+    <meta name="description" content="Software Engineer | Web Developer | Full-Stack Engineer" />
+  </head>
+  <body>
+    <div class="main-container">
+      <slot />
+    </div>
+    <script is:inline>
+      const updateFavicon = (isDark) => {
+        const favicon = document.getElementById("favicon");
+        if (favicon) {
+          favicon.href = isDark ? "/favicon-dark.png" : "/favicon-light.png";
+        }
+      };
+
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      updateFavicon(mediaQuery.matches);
+      mediaQuery.addEventListener("change", (e) => updateFavicon(e.matches));
+    </script>
+  </body>
 </html>

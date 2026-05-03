@@ -14,10 +14,7 @@
   <div class={cn("relative z-0 flex w-full h-full justify-center", className)}>
     {#each rows as _, i}
       <Motion let:motion>
-        <div
-          class="md:w-12 sm:h-12 w-9 h-9 dark:border-neutral-900 border-neutral-200"
-          use:motion
-        >
+        <div class="md:w-12 sm:h-12 w-9 h-9 dark:border-neutral-900 border-neutral-200" use:motion>
           {#each cols as _, j}
             <Motion
               whileHover={{
@@ -30,8 +27,7 @@
               let:motion
             >
               <div
-                class="md:w-12 sm:h-12 w-9 h-9 border-r border-t last:border-b {i ===
-                  0 && j >= 0
+                class="md:w-12 sm:h-12 w-9 h-9 border-r border-t last:border-b {i === 0 && j >= 0
                   ? 'border-l'
                   : ''}    dark:border-neutral-900 border-neutral-200 relative"
                 use:motion

@@ -3,7 +3,7 @@ module.exports = {
     extend: {
       animation: {
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
-        "meteor": "meteor 5s linear infinite",
+        meteor: "meteor 5s linear infinite",
       },
       keyframes: {
         "border-beam": {
@@ -11,7 +11,7 @@ module.exports = {
             "offset-distance": "100%",
           },
         },
-        "meteor": {
+        meteor: {
           "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
           "70%": { opacity: 1 },
           "100%": {

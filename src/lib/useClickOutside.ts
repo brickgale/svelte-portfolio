@@ -5,27 +5,25 @@
  * @param refs - Array of element refs to exclude from outside clicks
  */
 export function useClickOutside(
-    callback: () => void,
-    refs: Array<HTMLElement | undefined>
+  callback: () => void,
+  refs: Array<HTMLElement | undefined>
 ): () => void {
-    function handleClickOutside(event: MouseEvent): void {
-        const clickedOutside = refs.every(
-            (ref) => ref && !ref.contains(event.target as Node)
-        );
+  function handleClickOutside(event: MouseEvent): void {
+    const clickedOutside = refs.every((ref) => ref && !ref.contains(event.target as Node));
 
-        if (clickedOutside && refs.some((ref) => ref !== undefined)) {
-            callback();
-        }
+    if (clickedOutside && refs.some((ref) => ref !== undefined)) {
+      callback();
     }
+  }
 
-    // Delay adding the listener to avoid catching the same click that triggered the state change
-    const timeoutId = setTimeout(() => {
-        document.addEventListener('click', handleClickOutside);
-    }, 0);
+  // Delay adding the listener to avoid catching the same click that triggered the state change
+  const timeoutId = setTimeout(() => {
+    document.addEventListener("click", handleClickOutside);
+  }, 0);
 
-    // Return cleanup function
-    return () => {
-        clearTimeout(timeoutId);
-        document.removeEventListener('click', handleClickOutside);
-    };
+  // Return cleanup function
+  return () => {
+    clearTimeout(timeoutId);
+    document.removeEventListener("click", handleClickOutside);
+  };
 }
