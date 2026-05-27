@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Fira+Code:wght@300..700&family=Outfit:ital,wght@0,400..900;1,400..900&display=swap&family=Gantari:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
+@plugin "daisyui";
 @config "../../tailwind.config.mjs";
 
 @theme {
@@ -10,6 +11,34 @@
   --ui-primary: #e02b45;
   --tw-backdrop-blur: blur(8px);
   --ui-bg: #202020;
+}
+
+/* Override DaisyUI primary with brand red */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --color-primary: oklch(50% 0.24 18);
+  --color-primary-content: #ffffff;
+}
+
+/* Section backgrounds — dark-first defaults */
+:root,
+[data-theme="dark"] {
+  --section-bg: #0f0f0f;
+  --section-text: #e5e7eb;
+  --section-muted: #6b7280;
+  --pill-bg: rgba(255, 255, 255, 0.05);
+  --pill-border: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --section-bg: #ffffff;
+  --section-text: #111111;
+  --section-muted: #4b5563;
+  --pill-bg: rgba(0, 0, 0, 0.05);
+  --pill-border: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.08);
 }
 
 @layer utilities {
@@ -42,14 +71,7 @@
   }
 
   .main-container {
-    background: rgb(11, 21, 21);
-    background: linear-gradient(
-      0deg,
-      rgb(36, 19, 35) 0%,
-      rgb(83, 26, 95) 74%,
-      rgb(53, 13, 43) 100%
-    );
-    color: #fff;
+    background: #0a0a0a;
   }
 
   .logo {

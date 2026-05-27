@@ -5,24 +5,21 @@
   let props = $props();
 </script>
 
-<div
-  {...props}
-  class={cn("card flex flex-col rounded-md bg-gradient-to-br to-stone-700", props.class)}
->
+<div {...props} class={cn("card bg-base-200 shadow-md overflow-hidden", props.class)}>
   {@render props.children?.()}
   {#if !props.hideBeam}
     <BorderBeam size={150} duration={8} />
   {/if}
   {#if props.title}
-    <div class="card-title text-xl md:text-2xl p-5 text-gray-200 font-medium">
+    <div class="card-body p-0">
       {@render props.title?.()}
     </div>
   {/if}
-  <div class="card-content flex-grow-2 text-gray-300 font-light">
+  <div class="card-body pt-2 pb-0">
     {@render props.content?.()}
   </div>
   {#if props.footer}
-    <div class="card-footer px-6 py-2 min-h-[80px] text-gray-300 font-light">
+    <div class="card-body pt-0">
       {@render props.footer?.()}
     </div>
   {/if}

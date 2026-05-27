@@ -20,6 +20,12 @@ import "@styles/global.css";
     <meta name="description" content="Software Engineer | Web Developer | Full-Stack Engineer" />
   </head>
   <body>
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem("theme") ?? "dark";
+        document.documentElement.setAttribute("data-theme", saved);
+      })();
+    </script>
     <div class="main-container">
       <slot />
     </div>

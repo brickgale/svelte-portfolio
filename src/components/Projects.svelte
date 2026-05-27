@@ -1,41 +1,29 @@
-<script>
-  import ProjectCard from "@components/ui/ProjectCard.svelte";
-  import Button from "@components/ui/Button.svelte";
-  import Badge from "@components/ui/Badge.svelte";
-
-  let hideAll = $state(true);
-  let isHiding = $state(false);
-
-  function seeMore() {
-    isHiding = true;
-    // Wait for the fade-out animation to complete before hiding the container
-    setTimeout(() => {
-      hideAll = false;
-    }, 200);
-  }
+<script lang="ts">
+  import { onMount, onDestroy } from "svelte";
+  import { ExternalLink } from "@lucide/svelte";
 
   const projects = [
     {
       name: "Dating X",
       imgSrc: "/projects/dating3.jpg",
       company: "Optimail Co. Ltd. / Moebius Development Co. Ltd.",
-      date: "2018-2024",
+      date: "2018 — 2024",
       description:
-        "A multi domain dating app with theming, templating, localization, messaging, push notifications, and multiple payment gateway integrations.",
+        "A multi-domain dating app with theming, templating, localization, messaging, push notifications, and multiple payment gateway integrations.",
       url: "https://preview.datingdev.app/",
       hasLiveDemo: true,
-      role: "Made the new version of the app from Laravel and Angularjs v2 to laravel 5 and vuejs v2, added the theming feature with total of 3 completed themes integrated within the app. Also added the push notification feature for the app. Overall responsible for the front end development of the app.From adding new features to fixing bugs. Considered myself the main contributer and maintainer of the app.",
+      tech: ["Vue.js", "Laravel", "PHP", "MySQL"],
     },
     {
       name: "Skill Shift",
       imgSrc: "/projects/skillshift.jpg",
       company: "Freemight / Monstarlab Cebu",
-      date: "2017-2018",
+      date: "2017 — 2018",
       description:
-        "A japanese job posting board that allows part time worksers to find jobs throughout Japan. You can filter out which prefecture / region you want to apply and what type of job you want.",
+        "A Japanese job posting board for part-time workers with regional filtering by prefecture and job type.",
       url: "https://www.skill-shift.com/",
       hasLiveDemo: true,
-      role: "Started the project from scratch, created the whole front end of the app using laravel 5 and vuejs v2. Integrated the backend api with the frontend. Added features like filtering jobs by region and type of job. I had one collegue who eventually helped me to finish the project.",
+      tech: ["Vue.js", "Laravel", "PHP", "MySQL"],
     },
     {
       name: "Mee2box",
@@ -43,10 +31,10 @@
       company: "Freemight / Monstarlab Cebu",
       date: "2017",
       description:
-        "A japanese zoom-like video conferencing web app that allows you to create a room and invite clients to join, it allows file sharing inside the meeting as well so that you could brainstorm efficiently.",
+        "A Zoom-like video conferencing web app with in-meeting file sharing for efficient remote brainstorming.",
       url: "https://svenpham.webflow.io/project/mee2box",
       hasLiveDemo: false,
-      role: "Started the project from scratch, made it using laravel 5 and vuejs v1 with Keen-UI (similar to Vuetify which is based in Material Design). Responsible in integrating authentication, video conferencing (used peerjs then eventually switched to SkywayJs), file uploads, and the user management. Eventually passed to a different development company after I made the initial version of the app. I was the only one who worked on the project.",
+      tech: ["Vue.js", "Laravel", "WebRTC", "SkyWayJS"],
     },
     {
       name: "Amsale",
@@ -54,10 +42,10 @@
       company: "Sliding Monkey Web Development",
       date: "2016",
       description:
-        "Ecommerce website that was built with Magento mixed with Wordpress. Selling wedding dresses and other wedding related products. Contains color swatches and product customizations.",
+        "E-commerce site built with Magento + WordPress selling wedding dresses, featuring color swatches and product customizations.",
       url: null,
       hasLiveDemo: false,
-      role: "My first Magento project, it was already live when I was assigned to it. I was tasked to do some bug fixes and add new features. It was quite a bit more complicated that your normal ecommerce website unlike using Shopify. It wasn't using any version control, just uploading fies thru FTP.",
+      tech: ["Magento", "WordPress", "PHP"],
     },
     {
       name: "Kidsshoes",
@@ -65,32 +53,32 @@
       company: "Sliding Monkey Web Development",
       date: "2016",
       description:
-        "Shopify website for, you guessed it, kids' shoes. It contains a lot of products and categories. Updating promos and sales depending on the season.",
+        "Shopify store for kids' shoes with seasonal promos, Liquid templating, and new feature additions.",
       url: null,
       hasLiveDemo: false,
-      role: "My first Shopify project, it was already live when I was assigned to it. I was tasked to do some bug fixes and add new features. I learned a lot about Shopify and how it works. I also learned how to use Liquid, the templating language used in Shopify.",
+      tech: ["Shopify", "Liquid", "CSS"],
     },
     {
       name: "iAssess",
       imgSrc: "/projects/iassess.jpg",
       company: "Nerubia Web Solutions",
-      date: "2015-2016",
+      date: "2015 — 2016",
       description:
-        "An Assessment Platform for candidates to certain companies in Singapore. There were complex algorithms with different exam types that would generate candidates scores / results unto pdfs. It was a quite data heavy app, couple thousands of records for each exam. It was built with Laravel 4 and AngularJS v2.",
+        "A data-heavy assessment platform for Singapore companies with complex exam algorithms and PDF score generation.",
       url: "https://measure.iassessonline.com/",
       hasLiveDemo: true,
-      role: "When I was assigned to this project, it was already in production. Eventually, I was assigned to be the main maintainer for the app for atleast a solid year. This one of the projects that was very fulfilling for me, since the company allowed me to grow and learn a lot of things. I learned a lot from this project alongside with the Senior Developers in the company. My first project that was really strict on the Agile concept with actual sprints.",
+      tech: ["AngularJS", "Laravel", "MySQL"],
     },
     {
       name: "Groupjump",
       imgSrc: "/projects/groupjump.jpg",
       company: "NextIX Inc.",
-      date: "2014-2015",
+      date: "2014 — 2015",
       description:
-        'Social Media Web App that introduces "jumpsites", which is a facebook group-like feature where you can join and interact and socialize with like-minded people. This was running Laravel 4 and jQuery.',
+        'Social web app featuring "jumpsites" — Facebook-group-like communities for like-minded people to interact and socialize.',
       url: null,
       hasLiveDemo: false,
-      role: 'First project that I was introduce of a "collaborative work" and used Gitlab then switched to Github, I was assigned to front-end web for Groupjump, I eventually made Assistant Team Lead for couple months and atleast a month of Team Lead for the web team. Last sprint was to introduce e-commerce but eventually fell off since there weren\'t really any traffic.',
+      tech: ["jQuery", "Laravel", "PHP"],
     },
     {
       name: "Helpyoumarry",
@@ -98,10 +86,10 @@
       company: "QLICK & PAIR",
       date: "2013",
       description:
-        "Wordpress website for a Wedding Planner. Built with Wordpress and a custom theme using Bootstrap CSS and jQuery.",
+        "WordPress website built from scratch for a wedding planner, featuring a custom Bootstrap CSS theme.",
       url: null,
       hasLiveDemo: false,
-      role: "Project I started from scratch using Bootstrap CSS and jQuery inside Wordpress.",
+      tech: ["WordPress", "Bootstrap", "jQuery"],
     },
     {
       name: "QuickQuotz",
@@ -109,10 +97,10 @@
       company: "QLICK & PAIR",
       date: "2013",
       description:
-        "Wordpress website that showcases images with quotes with different categories (ex: inspirational, relationships, and etc).",
+        "WordPress image-quote sharing site with multiple categories like inspirational, relationships, and more.",
       url: null,
       hasLiveDemo: false,
-      role: "First project made from scratch using Bootstrap CSS and jQuery inside Wordpress.",
+      tech: ["WordPress", "Bootstrap", "jQuery"],
     },
     {
       name: "Mocha Chai Laboratories",
@@ -120,10 +108,10 @@
       company: "iCreative Solution",
       date: "2013",
       description:
-        "Wordpress website for a Boutique Hotel located in Malaysia. Built with Wordpress and a custom theme using Bootstrap CSS and jQuery.",
+        "WordPress site for a boutique hotel in Malaysia with custom theme using Bootstrap CSS and jQuery.",
       url: "http://mochachailab.com/dev1/",
       hasLiveDemo: true,
-      role: "Tasked to do bug fixes in UI and wordpress plugins. Also, made the logo using Photoshop.",
+      tech: ["WordPress", "Bootstrap", "Photoshop"],
     },
     {
       name: "IamJazz",
@@ -131,66 +119,202 @@
       company: "iCreative Solution",
       date: "2013",
       description:
-        "Wordpress website for a Boutique Hotel located in Malaysia. Built with Wordpress and a custom theme using custom CSs and jQuery.",
+        "Existing WordPress boutique hotel site requiring bug fixes, new pages, and IE-compatibility patching.",
       url: null,
       hasLiveDemo: false,
-      role: 'Already an existing wordpress website that had bunch of bugs that needs to be fixed and new pages to add. This project was built IE in mind, there were a lot of "hacks" to make it work in IE. Design looked so dated compared to modern websites at that time.',
+      tech: ["WordPress", "CSS", "jQuery"],
     },
   ];
+
+  let sectionEl: HTMLElement;
+  let leftColEl: HTMLElement;
+  let imageEls: HTMLElement[] = [];
+  let activeIndex = $state(0);
+  let scrollTriggers: any[] = [];
+
+  function padIndex(i: number): string {
+    return String(i + 1).padStart(2, "0");
+  }
+
+  onMount(async () => {
+    const { gsap } = await import("gsap");
+    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Set initial stacked positions
+    imageEls.forEach((el, i) => {
+      if (!el) return;
+      gsap.set(el, {
+        y: i * 22,
+        scale: 1 - i * 0.04,
+        rotation: i * 1.2,
+        zIndex: projects.length - i,
+        opacity: i === 0 ? 1 : 0.7 - i * 0.08,
+      });
+    });
+
+    // For each project entry, create a ScrollTrigger
+    const entries = leftColEl?.querySelectorAll<HTMLElement>(".project-entry");
+    entries?.forEach((entry, i) => {
+      const st = ScrollTrigger.create({
+        trigger: entry,
+        start: "top 55%",
+        end: "bottom 45%",
+        onEnter: () => activateProject(i),
+        onEnterBack: () => activateProject(i),
+      });
+      scrollTriggers.push(st);
+    });
+  });
+
+  function activateProject(index: number) {
+    if (typeof window === "undefined") return;
+    import("gsap").then(({ gsap }) => {
+      activeIndex = index;
+      imageEls.forEach((el, i) => {
+        if (!el) return;
+        const offset = i - index;
+        gsap.to(el, {
+          duration: 0.55,
+          ease: "power2.out",
+          y: offset === 0 ? 0 : offset > 0 ? offset * 22 : offset * 14,
+          scale: offset === 0 ? 1 : offset > 0 ? 1 - offset * 0.04 : 1 - Math.abs(offset) * 0.03,
+          rotation: offset === 0 ? 0 : offset * 1.5,
+          zIndex: offset === 0 ? projects.length + 1 : projects.length - i,
+          opacity: offset === 0 ? 1 : Math.abs(offset) <= 2 ? 0.5 - Math.abs(offset) * 0.1 : 0,
+        });
+      });
+    });
+  }
+
+  onDestroy(() => {
+    scrollTriggers.forEach((st) => st?.kill());
+  });
 </script>
 
 <section
   id="projects"
-  class="w-full min-h-screen flex flex-col relative justify-center items-center py-25 md:py-30 overflow-hidden"
+  class="w-full py-28 px-6 md:px-12 lg:px-20"
+  style="background: var(--section-bg); color: var(--section-text);"
+  bind:this={sectionEl}
 >
-  <div
-    class="flex flex-col w-full h-full max-w-7xl min-h-[400px] mx-auto px-4 sm:px-6 lg:px-8 pb-0 md:pb-20 relative z-10"
-  >
-    <div class="w-full title pb-10 md:pb-20">
-      <h2
-        class="text-2xl md:text-4xl pb-2 text-center tracking-wide"
-        data-aos="fade-up"
-        data-aos-delay="100"
-        data-aos-once="true"
-      >
-        Projects
-      </h2>
-      <div data-aos="fade-up" data-aos-delay="150" data-aos-once="true" class="text-center">
-        <Badge
-          text="🚀 What I've Worked On So Far"
-          hideBeam
-          outerClass="mr-1 mb-2"
-          class="px-3 border-[1.5px] border-(--ui-primary) bg-transparent"
-        />
-      </div>
-    </div>
-    <div
-      class="flex flex-row flex-wrap -m-2 overflow-hidden {hideAll
-        ? 'mask-linear-to-bottom h-[500px] md:h-[450px]'
-        : 'h-auto'}"
+  <div class="max-w-7xl mx-auto">
+    <!-- Section label -->
+    <p
+      class="text-[10px] tracking-[0.25em] uppercase font-medium mb-4"
+      style="color: oklch(50% 0.24 18);"
+      data-aos="fade-up"
     >
-      {#each projects as project, key}
-        <div
-          class="w-full sm:w-1/2 lg:w-1/3 p-2 flex justify-center"
-          data-aos="zoom-in"
-          data-aos-delay={300 + 50 * key}
-          data-aos-once="true"
-        >
-          <ProjectCard {project} />
-        </div>
-      {/each}
-    </div>
-    {#if hideAll}
-      <div
-        class="h-50 btn-con flex justify-center relative z-10 transition-all duration-500 ease-out {isHiding
-          ? 'opacity-0'
-          : 'opacity-100'}"
-        data-aos="fade-up"
-        data-aos-delay="600"
-        data-aos-once="true"
-      >
-        <Button btnclass="z-20 -top-20" withBeam class="px-8" onclick={seeMore}>See More</Button>
+      // PROJECTS
+    </p>
+
+    <!-- Section heading -->
+    <h2
+      class="font-outfit font-black text-[clamp(2.5rem,6vw,5rem)] leading-none mb-20"
+      style="color: var(--section-text);"
+      data-aos="fade-up"
+      data-aos-delay="80"
+    >
+      Selected<span style="color: oklch(50% 0.24 18);">Work.</span>
+    </h2>
+
+    <!-- Two-column layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <!-- Left: scrollable project list -->
+      <div bind:this={leftColEl}>
+        {#each projects as project, i}
+          <div
+            class="project-entry py-12"
+            style="border-bottom: 1px solid var(--border-subtle);"
+            data-aos="fade-up"
+            data-aos-delay={i * 40}
+          >
+            <div class="flex items-start justify-between gap-4 mb-4">
+              <span class="text-[11px] font-mono tracking-widest" style="color: oklch(50% 0.24 18);"
+                >{padIndex(i)}</span
+              >
+              {#if project.hasLiveDemo && project.url}
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-[11px] tracking-wide transition-opacity opacity-60 hover:opacity-100"
+                  style="color: var(--section-text);"
+                  aria-label="Live demo for {project.name}"
+                >
+                  <ExternalLink size={13} /> Live Demo
+                </a>
+              {/if}
+            </div>
+
+            <h3
+              class="font-outfit font-bold text-2xl md:text-3xl mb-2"
+              style="color: var(--section-text);"
+            >
+              {project.name}
+            </h3>
+
+            <p class="text-xs tracking-wide mb-4" style="color: oklch(50% 0.24 18);">
+              {project.company} · {project.date}
+            </p>
+
+            <p class="text-sm leading-relaxed mb-5" style="color: var(--section-muted);">
+              {project.description}
+            </p>
+
+            <!-- Mobile image (only visible on small screens) -->
+            <div class="lg:hidden rounded-xl overflow-hidden aspect-video mb-5">
+              <img src={project.imgSrc} alt={project.name} class="w-full h-full object-cover object-top" />
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              {#each project.tech as tag}
+                <span
+                  class="text-[10px] tracking-wide px-2.5 py-1 rounded-full"
+                  style="background: var(--pill-bg); border: 1px solid var(--border-subtle); color: var(--section-muted);"
+                  >{tag}</span
+                >
+              {/each}
+            </div>
+          </div>
+        {/each}
       </div>
-    {/if}
+
+      <!-- Right: sticky stacked image panel (desktop only) -->
+      <div class="hidden lg:flex items-center justify-center sticky top-[15vh] h-[70vh]">
+        <div class="relative w-full max-w-[480px] aspect-[4/3]">
+          {#each projects as project, i}
+            <div
+              bind:this={imageEls[i]}
+              class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl will-change-transform"
+            >
+              <img src={project.imgSrc} alt={project.name} class="w-full h-full object-cover" />
+              <!-- Overlay label -->
+              <div
+                class="absolute bottom-0 left-0 right-0 p-4"
+                style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);"
+              >
+                <p class="text-white text-sm font-semibold">{project.name}</p>
+                <p class="text-white/60 text-xs">{project.company}</p>
+              </div>
+            </div>
+          {/each}
+        </div>
+
+        <!-- Active indicator dots -->
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-2 -mr-6">
+          {#each projects as _, i}
+            <button
+              onclick={() => activateProject(i)}
+              class="w-1.5 h-1.5 rounded-full transition-all duration-300"
+              style="background: {activeIndex === i
+                ? 'oklch(50% 0.24 18)'
+                : 'rgba(255,255,255,0.25)'}; transform: scale({activeIndex === i ? 1.4 : 1});"
+              aria-label="Go to project {i + 1}"
+            ></button>
+          {/each}
+        </div>
+      </div>
+    </div>
   </div>
 </section>

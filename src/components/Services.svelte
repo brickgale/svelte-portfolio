@@ -29,6 +29,7 @@
 <section
   id="services"
   class="min-h-screen w-full flex flex-col relative justify-center items-center py-25 overflow-hidden"
+  data-theme="dark"
 >
   <div data-orientation="horizontal" role="separator" class="w-full absolute left-0 top-0 z-10">
     <div class="w-full border-solid border-t border-(--ui-primary)/30"></div>
@@ -45,7 +46,7 @@
           text="✨ Core services offering"
           hideBeam
           outerClass="mr-1 mb-2"
-          class="border-[1.5px] border-(--ui-primary) bg-transpare"
+          class="border-[.5px] border-(--ui-primary)/50 bg-transparent"
         />
       </div>
     </div>
@@ -61,7 +62,7 @@
                   y={2}
                   width={8}
                   height={8}
-                  class="[mask-image:radial-gradient(300px_circle_at_center,white,transparent)] opacity-20"
+                  class="mask-[radial-gradient(300px_circle_at_center,white,transparent)] opacity-20"
                 />
                 {service.title}
               </div>

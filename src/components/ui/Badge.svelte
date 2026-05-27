@@ -11,7 +11,7 @@
   {/if}
   <span
     class={cn(
-      "inline-flex h-full w-full items-center justify-center rounded-full bg-neutral-950 px-3 py-1 text-xs font-light text-gray-50 backdrop-blur-3xl",
+      "badge badge-soft inline-flex h-full w-full items-center rounded-full backdrop-blur-3xl",
       props.class
     )}
   >

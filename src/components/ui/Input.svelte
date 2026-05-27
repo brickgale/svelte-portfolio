@@ -9,7 +9,7 @@
       placeholder={props.placeholder}
       name={props.name}
       required={props.required}
-      class="h-40 pb-0 w-full cursor-default rounded-md border border-gray-800 bg-gray-950 p-3.5 text-gray-100 transition-colors duration-500 placeholder:select-none placeholder:text-gray-500 focus:border-(--ui-primary) focus:outline-none"
+      class="textarea textarea-bordered w-full h-40 focus:textarea-primary"
     ></textarea>
   {:else}
     <input
@@ -18,7 +18,7 @@
       type={props.type}
       name={props.name}
       required={props.required}
-      class="h-12 w-full cursor-default rounded-md border border-gray-800 bg-gray-950 p-3.5 text-gray-100 transition-colors duration-500 placeholder:select-none placeholder:text-gray-500 focus:border-(--ui-primary) focus:outline-none"
+      class="input input-bordered w-full focus:input-primary"
     />
   {/if}
 </div>

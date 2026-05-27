@@ -2,9 +2,10 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.svelte";
 import Hero from "@components/Hero.svelte";
-import Services from "@components/Services.svelte";
+import About from "@components/About.svelte";
+import Experience from "@components/Experience.svelte";
 import Projects from "@components/Projects.svelte";
-import Contact from "@components/Contact.svelte";
+import Footer from "@components/Footer.svelte";
 import App from "@components/App.svelte";
 ---
 
@@ -12,7 +13,8 @@ import App from "@components/App.svelte";
   <App client:load />
   <Header client:load />
   <Hero client:load />
-  <Services />
+  <About client:load />
+  <Experience />
   <Projects client:load />
-  <Contact client:load />
+  <Footer />
 </Layout>
