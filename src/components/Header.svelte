@@ -5,35 +5,56 @@
   import { themeStore } from "../lib/themeStore";
 
   type ClassConfig = {
-    desktop: string;
     mobile: string;
   };
 
   let isMobileNavOpen = $state<boolean>(false);
   let activeAnchor = $state<string>("about");
+  let isScrolled = $state<boolean>(false);
+  let isDarkSection = $state<boolean>(false);
+  let headerRef = $state<HTMLElement>();
   let mobileNavRef = $state<HTMLElement>();
   let hamburgerRef = $state<HTMLButtonElement>();
 
   const anchors = ["about", "experience", "projects"];
   const defaultClasses: ClassConfig = {
-    desktop:
-      "text-sm font-medium px-4 py-2 rounded-full text-[color:var(--section-muted)] hover:text-[var(--ui-primary)] hover:bg-[#e02b4514] transition-all duration-300 capitalize",
     mobile:
-      "text-xl font-semibold py-4 px-6 my-2 text-[color:var(--section-muted)] hover:text-[var(--ui-primary)] hover:bg-[#e02b4514] rounded-lg transition-all duration-300 capitalize border-l-2 border-transparent hover:border-(--ui-primary) mobile-nav-item",
+      "text-xl font-semibold py-4 px-6 my-2 text-(--section-muted) hover:text-(--ui-primary) hover:bg-[#14b8a614] rounded-lg transition-all duration-300 capitalize border-l-2 border-transparent hover:border-(--ui-primary) mobile-nav-item",
   };
   const activeClasses: ClassConfig = {
-    desktop: "active !text-[var(--ui-primary)] !bg-[#e02b4522]",
-    mobile: "active !text-[var(--ui-primary)] !bg-[#e02b4522] !border-(--ui-primary)",
+    mobile: "active !text-[var(--ui-primary)] !bg-[#14b8a622] !border-(--ui-primary)",
   };
 
-  const anchorClasses = (anchor: string, isMobile: boolean = false): string => {
+  const isInvertedHeader = (): boolean => theme === "light" && isDarkSection;
+
+  const desktopAnchorClasses = (anchor: string): string => {
+    const base = isInvertedHeader()
+      ? "text-sm font-medium px-4 py-2 text-white/70 hover:text-white transition-all duration-300 capitalize"
+      : "text-sm font-medium px-4 py-2 text-(--section-muted) hover:text-(--ui-primary) transition-all duration-300 capitalize";
+
+    return activeAnchor === anchor ? `${base} active !text-(--ui-primary)` : base;
+  };
+
+  const mobileAnchorClasses = (anchor: string): string => {
     return activeAnchor === anchor
-      ? `${getClass(defaultClasses, isMobile)} ${getClass(activeClasses, isMobile)}`
-      : getClass(defaultClasses, isMobile);
+      ? `${defaultClasses.mobile} ${activeClasses.mobile}`
+      : defaultClasses.mobile;
   };
 
-  const getClass = (classes: ClassConfig, isMobile: boolean): string => {
-    return isMobile ? classes.mobile : classes.desktop;
+  const themeToggleClasses = (): string => {
+    return isInvertedHeader()
+      ? "ml-2 p-2 text-white/70 hover:text-white transition-all duration-300"
+      : "ml-2 p-2 text-(--section-muted) hover:text-(--section-text) transition-all duration-300";
+  };
+
+  const logoColorClass = (): string => {
+    return theme === "dark" || isInvertedHeader() ? "bg-white" : "bg-zinc-900";
+  };
+
+  const mobileToggleClasses = (): string => {
+    return isInvertedHeader()
+      ? "md:hidden text-2xl text-white focus:outline-none z-60 flex justify-center items-center"
+      : "md:hidden text-2xl text-(--section-text) focus:outline-none z-60 flex justify-center items-center";
   };
 
   let theme = $state<"dark" | "light">("dark");
@@ -41,6 +62,27 @@
   $effect(() => {
     themeStore.init();
     themeStore.subscribe((t) => (theme = t));
+  });
+
+  $effect(() => {
+    const updateHeaderState = () => {
+      isScrolled = window.scrollY > 16;
+
+      const headerBottom = headerRef?.getBoundingClientRect().bottom ?? 64;
+      const probeY = Math.min(window.innerHeight - 1, Math.max(1, headerBottom + 8));
+      const probeElement = document.elementFromPoint(window.innerWidth / 2, probeY);
+
+      isDarkSection = probeElement?.closest('[data-theme="dark"]') !== null;
+    };
+
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    window.addEventListener("resize", updateHeaderState);
+
+    return () => {
+      window.removeEventListener("scroll", updateHeaderState);
+      window.removeEventListener("resize", updateHeaderState);
+    };
   });
 
   $effect(() => {
@@ -89,34 +131,45 @@
     }
   }
 
+  function handleLogoClick(e: MouseEvent): void {
+    e.preventDefault();
+    isMobileNavOpen = false;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Keep URL clean when returning to the top section.
+    if (window.location.hash) {
+      const cleanUrl = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, "", cleanUrl);
+    }
+  }
+
   function addActiveToNav(name: string): void {
     activeAnchor = name;
   }
-
 </script>
 
-<header class="fixed inset-x-0 top-0 z-50 px-6 md:px-12 lg:px-20">
-  <div class="flex justify-between items-center py-3 max-w-7xl mx-auto w-full relative z-50">
+<header
+  bind:this={headerRef}
+  class={`fixed inset-x-0 top-0 z-50 px-6 md:px-12 lg:px-20 border-b transition-all duration-300 ${isInvertedHeader() ? "border-white/10" : "border-(--pill-border)"} ${isScrolled ? (isInvertedHeader() ? "bg-black/35 backdrop-blur-md" : "bg-(--section-bg)/20 backdrop-blur-md") : "bg-transparent"}`}
+>
+  <div class="flex justify-between items-center py-2 max-w-7xl mx-auto w-full relative z-50">
     <a
       href="#hero"
-      onclick={(e) => handleClick(e, "hero")}
+      onclick={handleLogoClick}
       class="text-2xl font-bold relative"
       data-aos="fade-right"
       data-aos-delay="200"
       aria-label="logo"
     >
       <span
-        class={`logo w-8 h-8 top-1 md:w-10 md:h-10 inline-block hover:bg-(--ui-primary) relative z-20 ${theme === "light" ? "bg-zinc-900" : "bg-white"}`}
+        class={`logo w-8 h-8 top-1 inline-block hover:bg-(--ui-primary) relative z-20 ${logoColorClass()}`}
       ></span>
-      <div
-        class={`absolute rounded-full -top-30 left-1/2 transform -translate-x-1/2 size-[300px] z-10 bg-(--ui-primary) blur-[200px] ${theme === "light" ? "opacity-40" : "opacity-70"}`}
-      ></div>
     </a>
 
     <!-- Hamburger Menu Button -->
     <button
       bind:this={hamburgerRef}
-      class="md:hidden text-2xl focus:outline-none z-60 flex justify-center items-center"
+      class={mobileToggleClasses()}
       aria-label="Toggle navigation"
       onclick={() => (isMobileNavOpen = !isMobileNavOpen)}
       data-aos="fade-left"
@@ -132,7 +185,7 @@
     <!-- Desktop Navigation -->
     <nav
       id="desktop-nav"
-      class="hidden md:flex items-center gap-2 bg-[var(--pill-bg)] backdrop-blur-md px-3 py-2 rounded-full border border-[var(--pill-border)]"
+      class="hidden md:flex items-center gap-1"
       data-aos="fade-left"
       data-aos-delay="200"
     >
@@ -140,17 +193,13 @@
         <a
           href={`#${anchor}`}
           data-name={anchor}
-          class={anchorClasses(anchor)}
+          class={desktopAnchorClasses(anchor)}
           onclick={(e) => handleClick(e, anchor)}
         >
           {anchor}
         </a>
       {/each}
-      <button
-        onclick={themeStore.toggle}
-        aria-label="Toggle theme"
-        class="ml-1 p-2 rounded-full text-[color:var(--section-muted)] hover:text-[color:var(--section-text)] hover:bg-[var(--pill-bg)] transition-all duration-300"
-      >
+      <button onclick={themeStore.toggle} aria-label="Toggle theme" class={themeToggleClasses()}>
         {#if theme === "light"}
           <Moon size={16} />
         {:else}
@@ -164,7 +213,7 @@
       <nav
         bind:this={mobileNavRef}
         id="mobile-nav"
-        class="fixed top-0 right-0 h-screen w-[280px] flex flex-col pt-20 px-6 z-50 md:hidden border-l border-[var(--pill-border)] mobile-nav-menu"
+        class="fixed top-0 right-0 h-screen w-[280px] flex flex-col pt-20 px-6 z-50 md:hidden border-l border-(--pill-border) mobile-nav-menu"
         style="background: var(--section-bg); color: var(--section-text);"
         transition:fly={{ x: 280, duration: 300, opacity: 1 }}
       >
@@ -172,7 +221,7 @@
           <a
             href={`#${anchor}`}
             data-name={anchor}
-            class={anchorClasses(anchor, true)}
+            class={mobileAnchorClasses(anchor)}
             onclick={(e) => handleClick(e, anchor)}
             style="animation-delay: {100 + i * 50}ms"
           >
@@ -185,7 +234,7 @@
             isMobileNavOpen = false;
           }}
           aria-label="Toggle theme"
-          class="text-xl font-semibold py-4 px-6 my-2 text-[color:var(--section-muted)] hover:text-[var(--ui-primary)] hover:bg-[#e02b4514] rounded-lg transition-all duration-300 flex items-center gap-3 border-l-2 border-transparent hover:border-(--ui-primary) mobile-nav-item"
+          class="text-xl font-semibold py-4 px-6 my-2 text-(--section-muted) hover:text-(--ui-primary) hover:bg-[#14b8a614] rounded-lg transition-all duration-300 flex items-center gap-3 border-l-2 border-transparent hover:border-(--ui-primary) mobile-nav-item"
           style="animation-delay: {100 + anchors.length * 50}ms"
         >
           {#if theme === "light"}

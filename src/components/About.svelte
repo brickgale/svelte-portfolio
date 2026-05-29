@@ -38,7 +38,7 @@
     <!-- Section label -->
     <p
       class="text-[10px] tracking-[0.25em] uppercase font-medium mb-4"
-      style="color: oklch(50% 0.24 18);"
+      style="color: oklch(68% 0.13 196);"
       data-aos="fade-up"
     >
       // ABOUT
@@ -51,7 +51,7 @@
       data-aos="fade-up"
       data-aos-delay="80"
     >
-      About<span style="color: oklch(50% 0.24 18);">Me.</span>
+      About<span style="color: oklch(68% 0.13 196);">Me.</span>
     </h2>
 
     <!-- Two-column layout -->
@@ -85,7 +85,7 @@
               <img
                 src={`/svg_icons/${t.svg_name}.svg`}
                 alt={t.name}
-                class={`h-3.5 w-3.5 object-contain opacity-80 ${t.lightFix ? 'tech-icon-light-fix' : ''}`}
+                class={`h-3.5 w-3.5 object-contain opacity-80 ${t.lightFix ? "tech-icon-light-fix" : ""}`}
               />
               {t.name}
             </span>
@@ -145,7 +145,7 @@
                   this={link.icon}
                   size={15}
                   class="opacity-60 group-hover:opacity-100 transition-opacity"
-                  style="color: oklch(50% 0.24 18);"
+                  style="color: oklch(68% 0.13 196);"
                 />
                 <span class="group-hover:underline underline-offset-4">{link.label}</span>
               </a>

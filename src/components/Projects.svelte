@@ -202,7 +202,7 @@
     <!-- Section label -->
     <p
       class="text-[10px] tracking-[0.25em] uppercase font-medium mb-4"
-      style="color: oklch(50% 0.24 18);"
+      style="color: oklch(68% 0.13 196);"
       data-aos="fade-up"
     >
       // PROJECTS
@@ -215,7 +215,7 @@
       data-aos="fade-up"
       data-aos-delay="80"
     >
-      Selected<span style="color: oklch(50% 0.24 18);">Work.</span>
+      Selected<span style="color: oklch(68% 0.13 196);">Work.</span>
     </h2>
 
     <!-- Two-column layout -->
@@ -230,7 +230,7 @@
             data-aos-delay={i * 40}
           >
             <div class="flex items-start justify-between gap-4 mb-4">
-              <span class="text-[11px] font-mono tracking-widest" style="color: oklch(50% 0.24 18);"
+              <span class="text-[11px] font-mono tracking-widest" style="color: oklch(68% 0.13 196);"
                 >{padIndex(i)}</span
               >
               {#if project.hasLiveDemo && project.url}
@@ -254,7 +254,7 @@
               {project.name}
             </h3>
 
-            <p class="text-xs tracking-wide mb-4" style="color: oklch(50% 0.24 18);">
+            <p class="text-xs tracking-wide mb-4" style="color: oklch(68% 0.13 196);">
               {project.company} · {project.date}
             </p>
 
@@ -264,7 +264,11 @@
 
             <!-- Mobile image (only visible on small screens) -->
             <div class="lg:hidden rounded-xl overflow-hidden aspect-video mb-5">
-              <img src={project.imgSrc} alt={project.name} class="w-full h-full object-cover object-top" />
+              <img
+                src={project.imgSrc}
+                alt={project.name}
+                class="w-full h-full object-cover object-top"
+              />
             </div>
 
             <div class="flex flex-wrap gap-2">
@@ -308,7 +312,7 @@
               onclick={() => activateProject(i)}
               class="w-1.5 h-1.5 rounded-full transition-all duration-300"
               style="background: {activeIndex === i
-                ? 'oklch(50% 0.24 18)'
+                ? 'oklch(68% 0.13 196)'
                 : 'rgba(255,255,255,0.25)'}; transform: scale({activeIndex === i ? 1.4 : 1});"
               aria-label="Go to project {i + 1}"
             ></button>

@@ -64,7 +64,7 @@
     <!-- Section label -->
     <p
       class="text-[10px] tracking-[0.25em] uppercase font-medium mb-4"
-      style="color: oklch(50% 0.24 18);"
+      style="color: oklch(68% 0.13 196);"
       data-aos="fade-up"
     >
       // EXPERIENCE
@@ -76,7 +76,7 @@
       data-aos="fade-up"
       data-aos-delay="80"
     >
-      Work<span style="color: oklch(50% 0.24 18);">History.</span>
+      Work<span style="color: oklch(68% 0.13 196);">History.</span>
     </h2>
 
     <!-- Timeline -->
@@ -84,7 +84,7 @@
       <!-- Vertical line -->
       <div
         class="absolute left-0 top-0 bottom-0 w-px hidden md:block"
-        style="background: linear-gradient(to bottom, oklch(50% 0.24 18), transparent);"
+        style="background: linear-gradient(to bottom, oklch(68% 0.13 196), transparent);"
       ></div>
 
       <div class="flex flex-col gap-0">
@@ -100,9 +100,9 @@
               <!-- Timeline dot (desktop) -->
               <div
                 class="absolute -left-[5px] hidden md:block w-[11px] h-[11px] rounded-full border-2"
-                style="background: #111; border-color: oklch(50% 0.24 18);"
+                style="background: #111; border-color: oklch(68% 0.13 196);"
               ></div>
-              <span class="text-xs tracking-widest font-mono" style="color: oklch(50% 0.24 18);"
+              <span class="text-xs tracking-widest font-mono" style="color: oklch(68% 0.13 196);"
                 >{exp.period}</span
               >
               <span class="text-sm font-semibold leading-snug" style="color: #e5e7eb;"

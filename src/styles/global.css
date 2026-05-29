@@ -8,16 +8,16 @@
   --font-outfit: "Outfit", "sans-serif";
   --font-gothic: "Dela Gothic One", "sans-serif";
   --font-fira: "Fira Code", "monospace";
-  --ui-primary: #e02b45;
+  --ui-primary: #14b8a6;
   --tw-backdrop-blur: blur(8px);
   --ui-bg: #202020;
 }
 
-/* Override DaisyUI primary with brand red */
+/* Override DaisyUI primary with brand teal */
 :root,
 [data-theme="light"],
 [data-theme="dark"] {
-  --color-primary: oklch(50% 0.24 18);
+  --color-primary: oklch(68% 0.13 196);
   --color-primary-content: #ffffff;
 }
 
