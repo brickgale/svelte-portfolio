@@ -140,27 +140,127 @@
   let sectionEl: HTMLElement;
   let leftColEl: HTMLElement;
   let imageEls: HTMLElement[] = [];
+  let imageViewportEls: HTMLElement[] = [];
+  let imageMainEls: HTMLImageElement[] = [];
   let activeIndex = $state(0);
   let scrollTriggers: any[] = [];
+  let imagePanDistances: number[] = [];
+  let imageBaseOffsets: number[] = [];
+  let imagePanPinned: boolean[] = [];
+  let removeResizeListener: (() => void) | null = null;
+  let gsapInstance: any;
+  const maxStackDepth = 3;
+  const stackOffsetY = 20;
+  const stackScaleStep = 0.06;
+  const imagePanSpeedPxPerSecond = 42;
 
   function padIndex(i: number): string {
     return String(i + 1).padStart(2, "0");
   }
 
+  function updatePanMetrics(index: number) {
+    const viewportEl = imageViewportEls[index];
+    const imageEl = imageMainEls[index];
+    if (!viewportEl || !imageEl) return;
+
+    const { naturalWidth, naturalHeight } = imageEl;
+    if (!naturalWidth || !naturalHeight) {
+      imagePanDistances[index] = 0;
+      imageBaseOffsets[index] = 0;
+      return;
+    }
+
+    const viewportWidth = viewportEl.clientWidth;
+    const viewportHeight = viewportEl.clientHeight;
+    if (!viewportWidth || !viewportHeight) return;
+
+    const renderedHeight = (viewportWidth * naturalHeight) / naturalWidth;
+    const overflow = Math.max(0, renderedHeight - viewportHeight);
+    const centeredOffset = overflow > 0 ? 0 : (viewportHeight - renderedHeight) / 2;
+
+    imagePanDistances[index] = overflow;
+    imageBaseOffsets[index] = centeredOffset;
+  }
+
+  function refreshAllPanMetrics() {
+    projects.forEach((_, i) => updatePanMetrics(i));
+  }
+
+  function resetImagePan(index: number, instant = false) {
+    const imageEl = imageMainEls[index];
+    if (!imageEl || typeof window === "undefined" || !gsapInstance) return;
+
+    updatePanMetrics(index);
+    gsapInstance.killTweensOf(imageEl);
+    gsapInstance.to(imageEl, {
+      y: imageBaseOffsets[index] || 0,
+      duration: instant ? 0 : 0.6,
+      ease: "power2.out",
+    });
+  }
+
+  function panImageDown(index: number) {
+    const imageEl = imageMainEls[index];
+    if (!imageEl || typeof window === "undefined" || !gsapInstance || index !== activeIndex) return;
+
+    updatePanMetrics(index);
+    const overflow = imagePanDistances[index] || 0;
+    const startOffset = imageBaseOffsets[index] || 0;
+    if (overflow < 2) {
+      resetImagePan(index);
+      return;
+    }
+
+    gsapInstance.killTweensOf(imageEl);
+    gsapInstance.to(imageEl, {
+      y: startOffset - overflow,
+      duration: overflow / imagePanSpeedPxPerSecond,
+      ease: "none",
+    });
+  }
+
+  function handleImageHover(index: number) {
+    if (index !== activeIndex) return;
+    panImageDown(index);
+  }
+
+  function handleImageLeave(index: number) {
+    if (index !== activeIndex || imagePanPinned[index]) return;
+    resetImagePan(index);
+  }
+
+  function handleImageClick(index: number) {
+    if (index !== activeIndex) return;
+    imagePanPinned[index] = !imagePanPinned[index];
+    if (imagePanPinned[index]) {
+      panImageDown(index);
+      return;
+    }
+    resetImagePan(index);
+  }
+
+  function handleImageLoad(index: number) {
+    updatePanMetrics(index);
+    resetImagePan(index, true);
+  }
+
   onMount(async () => {
     const { gsap } = await import("gsap");
     const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    gsapInstance = gsap;
     gsap.registerPlugin(ScrollTrigger);
 
-    // Set initial stacked positions
+    // Set initial stack: active on top, up to 3 cards above it.
     imageEls.forEach((el, i) => {
       if (!el) return;
+      const offset = i;
+      const inStack = offset > 0 && offset <= maxStackDepth;
       gsap.set(el, {
-        y: i * 22,
-        scale: 1 - i * 0.04,
-        rotation: i * 1.2,
-        zIndex: projects.length - i,
-        opacity: i === 0 ? 1 : 0.7 - i * 0.08,
+        y: offset === 0 ? 0 : inStack ? -offset * stackOffsetY : -(maxStackDepth + 1) * stackOffsetY,
+        scale: offset === 0 ? 1 : inStack ? 1 - offset * stackScaleStep : 1 - (maxStackDepth + 1) * stackScaleStep,
+        rotation: 0,
+        zIndex: offset === 0 ? projects.length + 2 : projects.length - i,
+        opacity: offset === 0 ? 1 : inStack ? 0.82 - (offset - 1) * 0.18 : 0,
       });
     });
 
@@ -171,35 +271,66 @@
         trigger: entry,
         start: "top 55%",
         end: "bottom 45%",
-        onEnter: () => activateProject(i),
-        onEnterBack: () => activateProject(i),
+        onEnter: (self: any) => activateProject(i, self?.direction || 1),
+        onEnterBack: (self: any) => activateProject(i, self?.direction || -1),
       });
       scrollTriggers.push(st);
     });
+
+    refreshAllPanMetrics();
+    projects.forEach((_, i) => resetImagePan(i, true));
+
+    const handleResize = () => {
+      refreshAllPanMetrics();
+      projects.forEach((_, i) => resetImagePan(i, true));
+    };
+    window.addEventListener("resize", handleResize);
+    removeResizeListener = () => window.removeEventListener("resize", handleResize);
   });
 
-  function activateProject(index: number) {
-    if (typeof window === "undefined") return;
-    import("gsap").then(({ gsap }) => {
-      activeIndex = index;
-      imageEls.forEach((el, i) => {
-        if (!el) return;
-        const offset = i - index;
-        gsap.to(el, {
-          duration: 0.55,
-          ease: "power2.out",
-          y: offset === 0 ? 0 : offset > 0 ? offset * 22 : offset * 14,
-          scale: offset === 0 ? 1 : offset > 0 ? 1 - offset * 0.04 : 1 - Math.abs(offset) * 0.03,
-          rotation: offset === 0 ? 0 : offset * 1.5,
-          zIndex: offset === 0 ? projects.length + 1 : projects.length - i,
-          opacity: offset === 0 ? 1 : Math.abs(offset) <= 2 ? 0.5 - Math.abs(offset) * 0.1 : 0,
-        });
+  function activateProject(index: number, scrollDirection = 0) {
+    if (typeof window === "undefined" || !gsapInstance) return;
+
+    activeIndex = index;
+    imagePanPinned = projects.map(() => false);
+
+    imageMainEls.forEach((imageEl, i) => {
+      if (!imageEl) return;
+      updatePanMetrics(i);
+      gsapInstance.killTweensOf(imageEl);
+      gsapInstance.set(imageEl, {
+        y: imageBaseOffsets[i] || 0,
       });
     });
+
+    imageEls.forEach((el, i) => {
+      if (!el) return;
+      const offset = i - index;
+      const inStack = offset > 0 && offset <= maxStackDepth;
+      gsapInstance.to(el, {
+        duration: 0.55,
+        ease: "power2.out",
+        y: offset === 0 ? 0 : inStack ? -offset * stackOffsetY : -(maxStackDepth + 1) * stackOffsetY,
+        scale: offset === 0 ? 1 : inStack ? 1 - offset * stackScaleStep : 1 - (maxStackDepth + 1) * stackScaleStep,
+        rotation: 0,
+        zIndex: offset === 0 ? projects.length + 2 : projects.length - i,
+        opacity: offset === 0 ? 1 : inStack ? 0.82 - (offset - 1) * 0.18 : 0,
+      });
+    });
+
+    if (scrollDirection > 0) {
+      gsapInstance.delayedCall(0.12, () => {
+        if (activeIndex === index) panImageDown(index);
+      });
+      return;
+    }
+
+    resetImagePan(index, false);
   }
 
   onDestroy(() => {
     scrollTriggers.forEach((st) => st?.kill());
+    removeResizeListener?.();
   });
 </script>
 
@@ -297,37 +428,72 @@
       </div>
 
       <!-- Right: sticky stacked image panel (desktop only) -->
-      <div class="hidden lg:flex items-center justify-center sticky top-[15vh] h-[70vh]">
-        <div class="relative w-full max-w-[480px] aspect-[4/3]">
+      <div class="hidden lg:flex items-center justify-center sticky top-[8vh] h-[82vh]">
+        <div class="relative w-full max-w-[560px] aspect-4/5">
+          <!-- Story-style active indicator lines -->
+          <div class="absolute top-3 left-3 right-3 z-30 flex gap-1.5">
+            {#each projects as _, i}
+              <button
+                onclick={(event) => {
+                  event.stopPropagation();
+                  activateProject(i);
+                }}
+                class="h-0.5 flex-1 rounded-full transition-colors duration-300"
+                style="background: {activeIndex === i
+                  ? 'oklch(68% 0.13 196)'
+                  : 'rgba(255,255,255,0.3)'}; box-shadow: 0 0 0.5px rgba(0,0,0,0.65), 0 1px 3px rgba(0,0,0,0.35);"
+                aria-label="Go to project {i + 1}"
+              ></button>
+            {/each}
+          </div>
+
           {#each projects as project, i}
             <div
               bind:this={imageEls[i]}
-              class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl will-change-transform"
+              class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl will-change-transform origin-top {activeIndex === i
+                ? 'cursor-pointer pointer-events-auto'
+                : 'pointer-events-none'}"
+              role="button"
+              tabindex={activeIndex === i ? 0 : -1}
+              aria-label="Preview {project.name} image"
+              onmouseenter={() => handleImageHover(i)}
+              onmouseleave={() => handleImageLeave(i)}
+              onclick={() => handleImageClick(i)}
+              onkeydown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  handleImageClick(i);
+                }
+              }}
             >
-              <img src={project.imgSrc} alt={project.name} class="w-full h-full object-cover" />
+              <!-- Blurred fill keeps the frame full when source image is short -->
+              <img
+                src={project.imgSrc}
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-100"
+              />
+              <div class="absolute inset-0 bg-black/40"></div>
+
+              <div bind:this={imageViewportEls[i]} class="absolute inset-0 overflow-hidden">
+                <img
+                  bind:this={imageMainEls[i]}
+                  src={project.imgSrc}
+                  alt={project.name}
+                  class="w-full h-auto object-top will-change-transform"
+                  onload={() => handleImageLoad(i)}
+                />
+              </div>
+
               <!-- Overlay label -->
               <div
-                class="absolute bottom-0 left-0 right-0 p-4"
+                class="absolute bottom-0 left-0 right-0 p-4 z-20"
                 style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);"
               >
                 <p class="text-white text-sm font-semibold">{project.name}</p>
                 <p class="text-white/60 text-xs">{project.company}</p>
               </div>
             </div>
-          {/each}
-        </div>
-
-        <!-- Active indicator dots -->
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-2 -mr-6">
-          {#each projects as _, i}
-            <button
-              onclick={() => activateProject(i)}
-              class="w-1.5 h-1.5 rounded-full transition-all duration-300"
-              style="background: {activeIndex === i
-                ? 'oklch(68% 0.13 196)'
-                : 'rgba(255,255,255,0.25)'}; transform: scale({activeIndex === i ? 1.4 : 1});"
-              aria-label="Go to project {i + 1}"
-            ></button>
           {/each}
         </div>
       </div>
