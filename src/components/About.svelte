@@ -59,7 +59,7 @@
       <!-- Left: bio + tech chips -->
       <div data-aos="fade-up" data-aos-delay="150">
         <p class="text-lg leading-relaxed mb-6" style="color: var(--section-text);">
-          I'm a Full Stack Web Developer based in the Philippines with over 10 years of experience
+          I'm a Full Stack Web Developer based in the Philippines with over 13+ years of experience
           building web applications across industries — from dating platforms and job boards to
           assessment tools and e-commerce stores.
         </p>

@@ -4,6 +4,17 @@
 
   const projects = [
     {
+      name: "Joysound",
+      imgSrc: "/projects/joysound.jpg",
+      company: "Monstarlab Cebu",
+      date: "2024 - 2025",
+      description:
+        "A content heavy karaoke web app built with Nextjs, with weekly and monthly ranking for songs, and artists. It uses headless CMS called kuroco CMS.",
+      url: "https://www.joysound.com/web/",
+      hasLiveDemo: true,
+      tech: ["Nextjs", "React", "Typescript", "TailwindCSS", "Storybook"],
+    },
+    {
       name: "Dating X",
       imgSrc: "/projects/dating3.jpg",
       company: "Optimail Co. Ltd. / Moebius Development Co. Ltd.",
@@ -230,8 +241,9 @@
             data-aos-delay={i * 40}
           >
             <div class="flex items-start justify-between gap-4 mb-4">
-              <span class="text-[11px] font-mono tracking-widest" style="color: oklch(68% 0.13 196);"
-                >{padIndex(i)}</span
+              <span
+                class="text-[11px] font-mono tracking-widest"
+                style="color: oklch(68% 0.13 196);">{padIndex(i)}</span
               >
               {#if project.hasLiveDemo && project.url}
                 <a

@@ -1,11 +1,27 @@
 <script lang="ts">
   const experiences = [
     {
+      company: "PURE Property Management",
+      role: "Senior Software Engineer",
+      period: "2025 - Present",
+      description:
+        "Worked as a full stack developer on a robust property management system built with Vue.js and NestJS. Contributed to both frontend and backend development, implementing new features, optimizing performance, and ensuring code quality.",
+      tags: ["Monorepo", "Vuejs", "Nestjs", "Microservices"],
+    },
+    {
+      company: "Monstarlab Cebu",
+      role: "Full Stack Developer",
+      period: "2024 — 2025",
+      description:
+        "Working on a collaboration web app built with Nextjs. Primary role as Front-end Tech Lead, contributes code, code reviews, and guiding junior devs.",
+      tags: ["Nextjs", "React", "Typescript", "TailwindCSS", "Storybook", "Team Lead"],
+    },
+    {
       company: "Optimail Co. Ltd. / Moebius Development",
       role: "Full Stack Developer",
       period: "2018 — 2024",
       description:
-        "Lead developer on Dating X — a multi-domain dating platform with theming, localization, push notifications, and multiple payment gateway integrations. Migrated the app from Laravel + AngularJS to Laravel 5 + Vue.js, added a full theming system with 3 completed themes, and became the main contributor and maintainer over 6 years.",
+        "Main maintainer on Dating X — a multi-domain dating platform with theming, localization, push notifications, and multiple payment gateway integrations. Migrated the app from Laravel + AngularJS to Laravel 5 + Vue.js, added a full theming system with 3 completed themes, and became the main contributor and maintainer over 6 years.",
       tags: ["Vue.js", "Laravel", "PHP", "MySQL", "Push Notifications", "Payment Gateways"],
     },
     {
@@ -18,7 +34,7 @@
     },
     {
       company: "Sliding Monkey Web Development",
-      role: "Frontend Developer",
+      role: "Full Stack Developer",
       period: "2016",
       description:
         "Maintained and extended two live e-commerce stores. Amsale — a Magento + WordPress wedding dress store with color swatches and product customizations. Kidsshoes — a Shopify store with Liquid templating, seasonal promos, and new feature additions.",
@@ -34,10 +50,10 @@
     },
     {
       company: "NextIX Inc.",
-      role: "Frontend Developer / Asst. Team Lead",
+      role: "Web Team Lead",
       period: "2014 — 2015",
       description:
-        'Frontend developer on Groupjump — a social media web app with a Facebook-groups-like "jumpsite" feature built on Laravel 4 + jQuery. Promoted to Assistant Team Lead and eventually Team Lead of the web team for the final sprint.',
+        'Web developer on Groupjump — a social media web app with a Facebook-groups-like "jumpsite" feature built on Laravel 4 + jQuery. Promoted to Assistant Team Lead and eventually Team Lead of the web team for the final sprint.',
       tags: ["jQuery", "Laravel", "Social Media", "Team Lead"],
     },
     {
