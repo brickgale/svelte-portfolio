@@ -6,6 +6,7 @@
     { name: "CSS", svg_name: "css" },
     { name: "JavaScript", svg_name: "javascript" },
     { name: "TypeScript", svg_name: "typescript" },
+    { name: "Tailwind", svg_name: "tailwindcss" },
     { name: "Vue", svg_name: "vue" },
     { name: "React", svg_name: "react" },
     { name: "Svelte", svg_name: "svelte" },
@@ -118,8 +119,7 @@
             >
           </div>
           <div class="flex flex-col gap-1 pl-5">
-            <span class="text-xs" style="color: var(--section-muted);">✓ Full-time roles</span>
-            <span class="text-xs" style="color: var(--section-muted);">✓ Contract / freelance</span>
+            <span class="text-xs" style="color: var(--section-muted);">✓ Project-based</span>
             <span class="text-xs" style="color: var(--section-muted);">✓ Consulting</span>
           </div>
         </div>

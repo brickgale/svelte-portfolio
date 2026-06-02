@@ -256,8 +256,14 @@
       const offset = i;
       const inStack = offset > 0 && offset <= maxStackDepth;
       gsap.set(el, {
-        y: offset === 0 ? 0 : inStack ? -offset * stackOffsetY : -(maxStackDepth + 1) * stackOffsetY,
-        scale: offset === 0 ? 1 : inStack ? 1 - offset * stackScaleStep : 1 - (maxStackDepth + 1) * stackScaleStep,
+        y:
+          offset === 0 ? 0 : inStack ? -offset * stackOffsetY : -(maxStackDepth + 1) * stackOffsetY,
+        scale:
+          offset === 0
+            ? 1
+            : inStack
+              ? 1 - offset * stackScaleStep
+              : 1 - (maxStackDepth + 1) * stackScaleStep,
         rotation: 0,
         zIndex: offset === 0 ? projects.length + 2 : projects.length - i,
         opacity: offset === 0 ? 1 : inStack ? 0.82 - (offset - 1) * 0.18 : 0,
@@ -310,8 +316,14 @@
       gsapInstance.to(el, {
         duration: 0.55,
         ease: "power2.out",
-        y: offset === 0 ? 0 : inStack ? -offset * stackOffsetY : -(maxStackDepth + 1) * stackOffsetY,
-        scale: offset === 0 ? 1 : inStack ? 1 - offset * stackScaleStep : 1 - (maxStackDepth + 1) * stackScaleStep,
+        y:
+          offset === 0 ? 0 : inStack ? -offset * stackOffsetY : -(maxStackDepth + 1) * stackOffsetY,
+        scale:
+          offset === 0
+            ? 1
+            : inStack
+              ? 1 - offset * stackScaleStep
+              : 1 - (maxStackDepth + 1) * stackScaleStep,
         rotation: 0,
         zIndex: offset === 0 ? projects.length + 2 : projects.length - i,
         opacity: offset === 0 ? 1 : inStack ? 0.82 - (offset - 1) * 0.18 : 0,
@@ -431,7 +443,7 @@
       <div class="hidden lg:flex items-center justify-center sticky top-[8vh] h-[82vh]">
         <div class="relative w-full max-w-[560px] aspect-4/5">
           <!-- Story-style active indicator lines -->
-          <div class="absolute top-3 left-3 right-3 z-30 flex gap-1.5">
+          <div class="absolute top-18 left-3 right-3 z-30 flex gap-1.5">
             {#each projects as _, i}
               <button
                 onclick={(event) => {
@@ -450,7 +462,8 @@
           {#each projects as project, i}
             <div
               bind:this={imageEls[i]}
-              class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl will-change-transform origin-top {activeIndex === i
+              class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl will-change-transform origin-top top-15 {activeIndex ===
+              i
                 ? 'cursor-pointer pointer-events-auto'
                 : 'pointer-events-none'}"
               role="button"

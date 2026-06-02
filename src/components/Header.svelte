@@ -16,7 +16,7 @@
   let mobileNavRef = $state<HTMLElement>();
   let hamburgerRef = $state<HTMLButtonElement>();
 
-  const anchors = ["about", "experience", "projects"];
+  const anchors = ["home", "about", "experience", "projects"];
   const defaultClasses: ClassConfig = {
     mobile:
       "text-xl font-semibold py-4 px-6 my-2 text-(--section-muted) hover:text-(--ui-primary) hover:bg-[#14b8a614] rounded-lg transition-all duration-300 capitalize border-l-2 border-transparent hover:border-(--ui-primary) mobile-nav-item",

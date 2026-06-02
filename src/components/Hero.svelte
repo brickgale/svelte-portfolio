@@ -142,7 +142,7 @@
 </script>
 
 <section
-  id="hero"
+  id="home"
   class="relative min-h-svh w-full flex flex-col justify-center px-6 md:px-12 lg:px-20 overflow-hidden"
   style="background: var(--section-bg); color: var(--section-text);"
 >
@@ -215,7 +215,7 @@
 
         <!-- Mobile profile image -->
         <div
-          class="lg:hidden mb-10 w-fit mx-auto rounded-xl p-2 overflow-hidden"
+          class="lg:hidden mb-10 w-fit mx-auto rounded-xl p-2 overflow-hidden rotate-3"
           style="border: 1px solid var(--border-subtle); background: var(--pill-bg);"
           data-aos="fade-up"
           data-aos-delay="460"
@@ -223,7 +223,7 @@
           <img
             src="/profile-pic.jpg"
             alt="Brian Monsales"
-            class="block w-[200px] max-w-full aspect-4/5 object-cover object-top rounded-xl"
+            class="block w-[200px] max-w-full aspect-4/5 object-cover object-top rounded-lg"
           />
         </div>
 
@@ -267,7 +267,7 @@
           bind:this={cardEl}
           onmousemove={handleMouseMove}
           onmouseleave={handleMouseLeave}
-          class="card relative w-full max-w-[320px] overflow-hidden cursor-default select-none"
+          class="card relative w-full max-w-[320px] overflow-hidden cursor-default select-none rotate-3"
           style="
             transform: perspective(900px) rotateX({tiltX}deg) rotateY({tiltY}deg) scale({isHovered
             ? 1.03
