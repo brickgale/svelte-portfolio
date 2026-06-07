@@ -3,7 +3,7 @@
     {
       company: "PURE Property Management",
       role: "Senior Software Engineer",
-      period: "2025 - Present",
+      period: "2026 - Present",
       description:
         "Worked as a full stack developer on a robust property management system built with Vue.js and NestJS. Contributed to both frontend and backend development, implementing new features, optimizing performance, and ensuring code quality.",
       tags: ["Monorepo", "Vuejs", "Nestjs", "Microservices"],
@@ -11,7 +11,7 @@
     {
       company: "Monstarlab Cebu",
       role: "Full Stack Developer",
-      period: "2024 — 2025",
+      period: "2025 — 2026",
       description:
         "Working on a collaboration web app built with Nextjs. Primary role as Front-end Tech Lead, contributes code, code reviews, and guiding junior devs.",
       tags: ["Nextjs", "React", "Typescript", "TailwindCSS", "Storybook", "Team Lead"],
